@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="页面未找到 - 返回三月七的个人主页">
+<link rel="canonical" href="https://march7th.work/404.html">
+<meta property="og:title" content="404 - 页面未找到 | 三月七的工具箱">
+<meta property="og:description" content="页面未找到 - 返回三月七的个人主页">
+<meta property="og:url" content="https://march7th.work/404.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="404 - 页面未找到 | 三月七的工具箱">
+<meta name="twitter:description" content="页面未找到 - 返回三月七的个人主页">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://march7th.work/404.html#webpage",
+      "name": "404 - 页面未找到",
+      "url": "https://march7th.work/404.html",
+      "description": "页面未找到 - 返回三月七的个人主页",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "404 页面未找到",
+          "item": "https://march7th.work/404.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<title>404 - 页面未找到 | 三月七的工具箱</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100vh;width:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow:hidden}
+body::before{content:'';position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:0}
+.container{position:relative;z-index:1;background:rgba(255,255,255,0.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;padding:60px 48px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.25);max-width:480px;width:100%}
+.code{font-size:96px;font-weight:800;background:linear-gradient(135deg,#ff6b6b,#ff9ff3,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;letter-spacing:-2px}
+.title{font-size:26px;color:#fff;margin-bottom:12px;text-shadow:0 2px 8px rgba(0,0,0,0.5);font-weight:600}
+.desc{font-size:15px;color:rgba(255,255,255,0.8);margin-bottom:36px;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,0.3)}
+.btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 32px;text-decoration:none;border-radius:30px;font-size:15px;font-weight:500;transition:all 0.3s ease;cursor:pointer;border:none}
+.btn-retry{background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4)}
+.btn-retry:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.btn-home{background:linear-gradient(135deg,#ff6b6b,#ff9ff3);color:#fff;box-shadow:0 4px 15px rgba(255,107,107,0.4)}
+.btn-home:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,107,0.5)}
+.btn:active{transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="code">404</div>
+  <h1 class="title">404 - 页面未找到</h1>
+  <p class="desc">您访问的页面不存在或已被移除<br>请检查网址是否正确，或返回主页继续浏览</p>
+  <div class="btn-group">
+    <button class="btn btn-retry" id="retryBtn">重试 (3)</button>
+    <a class="btn btn-home" href="index.html">返回主页</a>
+  </div>
+</div>
+<script>
+console.log('HTTP/1.1 301 Moved Permanently');
+console.log('Location: https://march7th.work/index.html');
+var count=3;
+var btn=document.getElementById('retryBtn');
+var timer=setInterval(function(){
+  count--;
+  if(count<=0){
+    clearInterval(timer);
+    btn.textContent='正在跳转...';
+    btn.disabled=true;
+    location.href='index.html';
+  }else{
+    btn.textContent='重试 ('+count+')';
+  }
+},1000);
+btn.onclick=function(){
+  clearInterval(timer);
+  location.href='index.html';
+};
+</script>
+<script src="lang.js?v=20260729"></script>
+</body>
+</html>

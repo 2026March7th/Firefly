@@ -1,0 +1,39 @@
+.lang-switcher{position:fixed;top:16px;right:16px;z-index:9999}
+.lang-btn{padding:8px 18px;border-radius:20px;border:1px solid rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:#fff;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.3);
+  transition:all 0.3s ease;text-shadow:0 1px 3px rgba(0,0,0,0.7);letter-spacing:0.5px;
+  display:inline-flex;align-items:center;gap:6px}
+.lang-btn:hover{background:rgba(255,105,180,0.45);transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(255,105,180,0.5),inset 0 1px 0 rgba(255,255,255,0.4)}
+.lang-btn:active{transform:translateY(0)}
+.lang-btn::after{content:"▾";font-size:0.7rem;opacity:0.8}
+
+.lang-panel{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;
+  background:rgba(255,255,255,0.18);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.35);border-radius:14px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.3);
+  padding:8px;opacity:0;transform:translateY(-6px) scale(0.96);
+  pointer-events:none;transition:all 0.25s cubic-bezier(0.22,1,0.36,1);
+  transform-origin:top right}
+.lang-panel.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.lang-option{display:flex;align-items:center;gap:10px;padding:10px 14px;
+  border-radius:10px;cursor:pointer;transition:all 0.2s ease;
+  color:#fff;font-size:0.9rem;font-weight:500;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+.lang-option:hover{background:rgba(255,105,180,0.35);transform:translateX(2px)}
+.lang-option.active{background:rgba(255,105,180,0.5)}
+.lang-option .check{width:16px;color:rgba(255,255,255,0.95);font-size:0.85rem;font-weight:700}
+.lang-option .label{flex:1}
+.lang-divider{height:1px;background:rgba(255,255,255,0.2);margin:6px 4px}
+.lang-disclaimer{padding:8px 10px 4px;font-size:0.72rem;line-height:1.5;
+  color:rgba(255,255,255,0.7);text-shadow:0 1px 2px rgba(0,0,0,0.5);text-align:center}
+.lang-disclaimer .en{display:block;margin-top:2px;font-size:0.68rem;opacity:0.85}
+
+@media (max-width:600px){
+  .lang-switcher{top:10px;right:10px}
+  .lang-btn{padding:6px 14px;font-size:0.82rem;border-radius:16px}
+  .lang-panel{min-width:180px}
+  .lang-option{padding:8px 12px;font-size:0.85rem}
+}

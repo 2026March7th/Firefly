@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-doctitle="md5.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="在线MD5校验工具，本地计算文件MD5哈希值，支持文件拖拽上传和MD5比对验证">
+<link rel="canonical" href="https://march7th.work/md5.html">
+<meta property="og:title" content="MD5校验工具 - 文件哈希计算与比对验证工具">
+<meta property="og:description" content="在线MD5校验工具，本地计算文件MD5哈希值，支持文件拖拽上传和MD5比对验证">
+<meta property="og:url" content="https://march7th.work/md5.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MD5校验工具 - 文件哈希计算与比对验证工具">
+<meta name="twitter:description" content="在线MD5校验工具，本地计算文件MD5哈希值，支持文件拖拽上传和MD5比对验证">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "MD5校验工具",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "description": "在线MD5校验工具，本地计算文件MD5哈希值，支持文件拖拽上传和MD5比对验证",
+      "url": "https://march7th.work/md5.html",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MD5校验工具",
+          "item": "https://march7th.work/md5.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<title>MD5校验工具 - 文件哈希计算与比对验证工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow-x:hidden;overflow-y:auto}
+body{background:url(2.jpg) center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px 20px 60px;position:relative;gap:24px}
+body::before{content:"";position:absolute;inset:0;background:rgba(255,192,203,0.15);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.page-header{position:relative;z-index:1;width:90%;max-width:720px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{padding:10px 22px;border:1px solid rgba(255,255,255,0.5);border-radius:22px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-decoration:none;display:inline-block}
+.back-btn:hover{background:rgba(255,105,180,0.4);transform:translateX(-2px);box-shadow:0 4px 14px rgba(255,105,180,0.4)}
+.page-title{font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,0.85),0 0 8px rgba(0,0,0,0.6);display:flex;align-items:center;gap:10px}
+.page-title::before{content:"";width:5px;height:24px;background:linear-gradient(to bottom,#ff69b4,#ffb6c1);border-radius:3px;display:inline-block}
+.title-wrap{display:flex;flex-direction:column;gap:4px}
+.page-subtitle{font-size:0.95rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+.tool-card{position:relative;z-index:1;width:90%;max-width:720px;padding:32px 28px;border-radius:22px;background:linear-gradient(135deg,rgba(0,0,0,0.28) 0%,rgba(255,105,180,0.32) 100%);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,0.4);box-shadow:0 10px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both}
+.tool-intro{font-size:0.9rem;color:#fff;line-height:1.75;margin-bottom:18px;padding:14px 18px;border-radius:12px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.2);border-left:3px solid rgba(255,105,180,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.drop-zone{border:2px dashed rgba(255,255,255,0.5);border-radius:16px;padding:48px 24px;text-align:center;cursor:pointer;transition:all 0.3s ease;background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.drop-zone:hover,.drop-zone.drag-over{border-color:#ffb6c1;background:rgba(255,105,180,0.22);box-shadow:0 8px 24px rgba(255,105,180,0.3)}
+.drop-zone-title{font-size:1.15rem;font-weight:600;color:#fff;margin-bottom:6px;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.drop-zone-desc{font-size:0.85rem;color:rgba(255,255,255,0.75);text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.result-section{margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.2);display:none}
+.result-section.show{display:block}
+.result-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.result-label{min-width:80px;font-size:0.9rem;color:rgba(255,255,255,0.8);font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.result-value{flex:1;min-width:180px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);color:#fff;font-family:Consolas,Monaco,monospace;font-size:0.9rem;word-break:break-all;text-shadow:0 2px 6px rgba(0,0,0,0.4);cursor:default}
+.copy-btn{padding:8px 18px;border:1px solid rgba(255,255,255,0.5);border-radius:18px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;white-space:nowrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.copy-btn:hover{background:rgba(255,105,180,0.5);box-shadow:0 4px 12px rgba(255,105,180,0.4)}
+.copy-btn.copied{background:rgba(80,200,120,0.5);border-color:rgba(80,200,120,0.6)}
+.verify-section{margin-top:18px;padding:18px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.section-title{font-size:0.95rem;font-weight:700;color:#fff;margin:18px 0 10px;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.section-title:first-child{margin-top:0}
+.verify-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:8px;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.verify-row{display:flex;gap:10px;flex-wrap:wrap}
+.verify-input{flex:1;min-width:200px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-family:Consolas,Monaco,monospace;font-size:0.88rem;outline:none;transition:all 0.3s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.verify-input::placeholder{color:rgba(255,255,255,0.5)}
+.verify-input:focus{border-color:#ffb6c1;box-shadow:0 0 0 2px rgba(255,105,180,0.3)}
+.verify-btn{padding:10px 22px;border:none;border-radius:18px;background:linear-gradient(135deg,#ff69b4,#ff85c1);color:#fff;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;box-shadow:0 4px 12px rgba(255,105,180,0.4);white-space:nowrap;position:relative;overflow:hidden}
+.verify-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,105,180,0.6)}
+.verify-result{margin-top:12px;padding:10px 14px;border-radius:10px;font-size:0.9rem;font-weight:600;display:none}
+.verify-result.show{display:block}
+.verify-result.match{background:rgba(80,200,120,0.2);border:1px solid rgba(80,200,120,0.5);color:#90ee90}
+.verify-result.mismatch{background:rgba(255,80,80,0.2);border:1px solid rgba(255,80,80,0.5);color:#ff9999}
+.progress-wrap{width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,0.15);margin-top:14px;overflow:hidden;display:none}
+.progress-wrap.show{display:block}
+.progress-bar{height:100%;width:0%;border-radius:3px;background:linear-gradient(90deg,#ff69b4,#ffb6c1);transition:width 0.3s ease;box-shadow:0 0 10px rgba(255,105,180,0.6)}
+.note{margin-top:18px;padding:12px 16px;border-radius:12px;font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.75);background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.15);text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.note strong{color:#ffb6c1}
+#file-input{display:none}
+@media (max-width:600px){.page-title{font-size:1.4rem}.tool-card{padding:24px 18px}.drop-zone{padding:32px 16px}.drop-zone-icon{font-size:2.4rem}}
+.tool-nav{position:relative;z-index:1;max-width:900px;width:calc(100% - 48px);margin:24px auto 0;padding:14px 20px;border-radius:16px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:center;font-size:0.85rem}.tool-nav span{color:rgba(255,255,255,0.5);font-weight:500}.tool-nav a{color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.2s ease}.tool-nav a:hover{color:#fff;text-shadow:0 0 8px rgba(255,105,180,0.6)}.tool-nav .current{color:#fff;font-weight:700;text-shadow:0 0 8px rgba(255,105,180,0.4)}
+</style>
+<link rel="stylesheet" href="lang.css">
+</head>
+<body>
+<div class="lang-switcher"><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button></div>
+<div class="page-header">
+  <a class="back-btn" href="index.html" data-i18n="nav.back">← 返回工具箱</a>
+  <div class="title-wrap">
+    <h1 class="page-title" data-i18n="md5.title">MD5 校验工具</h1>
+    <p class="page-subtitle" data-i18n="md5.subtitle">在浏览器本地计算文件 MD5 哈希值，支持拖拽上传与结果比对</p>
+  </div>
+</div>
+
+<div class="tool-card">
+  <p class="tool-intro">本工具是一款在线MD5校验工具，可在浏览器本地计算文件的MD5哈希值，支持点击选择文件和拖拽上传。计算完成后，您可将结果与已知的MD5值进行比对，快速验证文件完整性。所有计算均在本地完成，文件不会上传到服务器。</p>
+  <div class="section-title">文件上传</div>
+  <div class="drop-zone" id="drop-zone">
+    <div class="drop-zone-title" data-i18n="md5.dropTitle">点击选择文件 或 拖拽到此处</div>
+    <div class="drop-zone-desc" data-i18n="md5.dropDesc">文件仅在浏览器本地计算，不会上传到服务器</div>
+    <input type="file" id="file-input">
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <div class="section-title">计算结果</div>
+    <div class="result-row">
+      <div class="result-label" data-i18n="md5.fileName">文件名</div>
+      <div class="result-value" id="file-name">-</div>
+    </div>
+    <div class="result-row">
+      <div class="result-label" data-i18n="md5.size">大小</div>
+      <div class="result-value" id="file-size">-</div>
+    </div>
+    <div class="result-row">
+      <div class="result-label">MD5</div>
+      <div class="result-value" id="md5-result">-</div>
+      <button class="copy-btn" id="copy-btn" onclick="copyMD5()" data-i18n="common.copy">复制</button>
+    </div>
+
+    <div class="verify-section">
+      <div class="verify-title" data-i18n="md5.verifyTitle">与已知 MD5 比对</div>
+      <div class="verify-row">
+        <input type="text" class="verify-input" id="verify-input" data-i18n-placeholder="md5.verifyPlaceholder" placeholder="粘贴已知 MD5 值，不区分大小写">
+        <button class="verify-btn" onclick="verifyMD5()" data-i18n="common.verify">比对</button>
+      </div>
+      <div class="verify-result" id="verify-result"></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong data-i18n="md5.note">说明：</strong><span data-i18n="md5.note1">MD5 仅适用于快速完整性校验（如检测下载损坏），</span><strong data-i18n="md5.note2">不适用于安全敏感场景</strong><span data-i18n="md5.note3">。MD5 抗碰撞能力已被攻破，涉及安全验证请使用 SHA-256 等更强算法。</span>
+  </div>
+</div>
+
+<script src="lang.js?v=20260729"></script>
+<script>
+// ===== MD5 算法实现 (RFC 1321) =====
+function safeAdd(x,y){var lsw=(x&0xFFFF)+(y&0xFFFF);var msw=(x>>16)+(y>>16)+(lsw>>16);return(msw<<16)|(lsw&0xFFFF)}
+function rol(n,c){return(n<<c)|(n>>>(32-c))}
+function cmn(q,a,b,x,s,ac){return safeAdd(rol(safeAdd(safeAdd(a,q),safeAdd(x,ac)),s),b)}
+function ff(a,b,c,d,x,s,ac){return cmn((b&c)|((~b)&d),a,b,x,s,ac)}
+function gg(a,b,c,d,x,s,ac){return cmn((b&d)|(c&(~d)),a,b,x,s,ac)}
+function hh(a,b,c,d,x,s,ac){return cmn(b^c^d,a,b,x,s,ac)}
+function ii(a,b,c,d,x,s,ac){return cmn(c^(b|(~d)),a,b,x,s,ac)}
+function coreMd5(x,len){x[len>>5]|=0x80<<(len%32);x[(((len+64)>>>9)<<4)+14]=len;
+var a=1732584193,b=-271733879,c=-1732584194,d=271733878;
+for(var i=0;i<x.length;i+=16){
+var oa=a,ob=b,oc=c,od=d;
+a=ff(a,b,c,d,x[i+0],7,-680876936);d=ff(d,a,b,c,x[i+1],12,-389564586);c=ff(c,d,a,b,x[i+2],17,606105819);b=ff(b,c,d,a,x[i+3],22,-1044525330);
+a=ff(a,b,c,d,x[i+4],7,-176418897);d=ff(d,a,b,c,x[i+5],12,1200080426);c=ff(c,d,a,b,x[i+6],17,-1473231341);b=ff(b,c,d,a,x[i+7],22,-45705983);
+a=ff(a,b,c,d,x[i+8],7,1770035416);d=ff(d,a,b,c,x[i+9],12,-1958414417);c=ff(c,d,a,b,x[i+10],17,-42063);b=ff(b,c,d,a,x[i+11],22,-1990404162);
+a=ff(a,b,c,d,x[i+12],7,1804603682);d=ff(d,a,b,c,x[i+13],12,-40341101);c=ff(c,d,a,b,x[i+14],17,-1502002290);b=ff(b,c,d,a,x[i+15],22,1236535329);
+a=gg(a,b,c,d,x[i+1],5,-165796510);d=gg(d,a,b,c,x[i+6],9,-1069501632);c=gg(c,d,a,b,x[i+11],14,643717713);b=gg(b,c,d,a,x[i+0],20,-373897302);
+a=gg(a,b,c,d,x[i+5],5,-701558691);d=gg(d,a,b,c,x[i+10],9,38016083);c=gg(c,d,a,b,x[i+15],14,-660478335);b=gg(b,c,d,a,x[i+4],20,-405537848);
+a=gg(a,b,c,d,x[i+9],5,568446438);d=gg(d,a,b,c,x[i+14],9,-1019803690);c=gg(c,d,a,b,x[i+3],14,-187363961);b=gg(b,c,d,a,x[i+8],20,1163531501);
+a=gg(a,b,c,d,x[i+13],5,-1444681467);d=gg(d,a,b,c,x[i+2],9,-51403784);c=gg(c,d,a,b,x[i+7],14,1735328473);b=gg(b,c,d,a,x[i+12],20,-1926607734);
+a=hh(a,b,c,d,x[i+5],4,-378558);d=hh(d,a,b,c,x[i+8],11,-2022574463);c=hh(c,d,a,b,x[i+11],16,1839030562);b=hh(b,c,d,a,x[i+14],23,-35309556);
+a=hh(a,b,c,d,x[i+1],4,-1530992060);d=hh(d,a,b,c,x[i+4],11,1272893353);c=hh(c,d,a,b,x[i+7],16,-155497632);b=hh(b,c,d,a,x[i+10],23,-1094730640);
+a=hh(a,b,c,d,x[i+13],4,681279174);d=hh(d,a,b,c,x[i+0],11,-358537222);c=hh(c,d,a,b,x[i+3],16,-722521979);b=hh(b,c,d,a,x[i+6],23,76029189);
+a=hh(a,b,c,d,x[i+9],4,-640364487);d=hh(d,a,b,c,x[i+12],11,-421815835);c=hh(c,d,a,b,x[i+15],16,530742520);b=hh(b,c,d,a,x[i+2],23,-995338651);
+a=ii(a,b,c,d,x[i+0],6,-198630844);d=ii(d,a,b,c,x[i+7],10,1126891415);c=ii(c,d,a,b,x[i+14],15,-1416354905);b=ii(b,c,d,a,x[i+5],21,-57434055);
+a=ii(a,b,c,d,x[i+12],6,1700485571);d=ii(d,a,b,c,x[i+3],10,-1894986606);c=ii(c,d,a,b,x[i+10],15,-1051523);b=ii(b,c,d,a,x[i+1],21,-2054922799);
+a=ii(a,b,c,d,x[i+8],6,1873313359);d=ii(d,a,b,c,x[i+15],10,-30611744);c=ii(c,d,a,b,x[i+6],15,-1560198380);b=ii(b,c,d,a,x[i+13],21,1309151649);
+a=ii(a,b,c,d,x[i+4],6,-145523070);d=ii(d,a,b,c,x[i+11],10,-1120210379);c=ii(c,d,a,b,x[i+2],15,718787259);b=ii(b,c,d,a,x[i+9],21,-343485551);
+a=safeAdd(a,oa);b=safeAdd(b,ob);c=safeAdd(c,oc);d=safeAdd(d,od);}
+return[a,b,c,d]}
+function str2blks(str){var nblk=((str.length+8)>>6)+1;var blks=new Array(nblk*16);for(var i=0;i<nblk*16;i++)blks[i]=0;
+for(var i=0;i<str.length;i++)blks[i>>2]|=(str.charCodeAt(i)&255)<<((i%4)*8);
+blks[i>>2]|=0x80<<((i%4)*8);blks[nblk*16-2]=str.length*8;return blks}
+function binl2hex(binarray){var hex_tab="0123456789abcdef";var str="";
+for(var i=0;i<binarray.length*4;i++){str+=hex_tab.charAt((binarray[i>>2]>>((i%4)*8+4))&0xF)+hex_tab.charAt((binarray[i>>2]>>((i%4)*8))&0xF);}
+return str}
+function md5(str){return binl2hex(coreMd5(str2blks(str),str.length*8))}
+
+// ===== 文件 MD5 计算（分块读取，支持大文件）=====
+var currentMd5="";
+function formatSize(bytes){
+if(bytes<1024)return bytes+" B";
+if(bytes<1024*1024)return(bytes/1024).toFixed(2)+" KB";
+if(bytes<1024*1024*1024)return(bytes/(1024*1024)).toFixed(2)+" MB";
+return(bytes/(1024*1024*1024)).toFixed(2)+" GB";
+}
+
+// 增量 MD5 状态
+var md5State=null,md5Len=0,md5Buffer=new Uint8Array(0);
+
+function md5Init(){md5State=[1732584193,-271733879,-1732584194,271733878];md5Len=0;md5Buffer=new Uint8Array(0);}
+
+function md5Update(chunk8){
+// 将新数据拼到 buffer 尾部
+var combined=new Uint8Array(md5Buffer.length+chunk8.length);
+combined.set(md5Buffer,0);combined.set(chunk8,md5Buffer.length);
+md5Buffer=combined;
+// 处理完整的 64 字节块（512 bit）
+var blockSize=64;
+var numBlocks=Math.floor(md5Buffer.length/blockSize);
+if(numBlocks>0){
+var x=new Array(16);
+for(var b=0;b<numBlocks;b++){
+for(var j=0;j<16;j++){
+var off=b*blockSize+j*4;
+x[j]=md5Buffer[off]|(md5Buffer[off+1]<<8)|(md5Buffer[off+2]<<16)|(md5Buffer[off+3]<<24);}
+var s=coreMd5(x,512);
+md5State=[safeAdd(md5State[0],s[0]),safeAdd(md5State[1],s[1]),safeAdd(md5State[2],s[2]),safeAdd(md5State[3],s[3])];
+md5Len+=512;}
+md5Buffer=md5Buffer.slice(numBlocks*blockSize);}}
+
+function md5Final(){
+// 填充 + 最终块
+var totalBits=md5Len+md5Buffer.length*8;
+var padLen=(md5Buffer.length<56)?(56-md5Buffer.length):(120-md5Buffer.length);
+var padded=new Uint8Array(md5Buffer.length+padLen+8);
+padded.set(md5Buffer,0);
+padded[md5Buffer.length]=0x80;
+// 末尾 64 位长度（小端）
+var byteLen=md5Buffer.length+padLen;
+padded[byteLen]=(totalBits)&0xFF;
+padded[byteLen+1]=(totalBits>>>8)&0xFF;
+padded[byteLen+2]=(totalBits>>>16)&0xFF;
+padded[byteLen+3]=(totalBits>>>24)&0xFF;
+// 高32位
+var hi=Math.floor(totalBits/0x100000000);
+padded[byteLen+4]=hi&0xFF;
+padded[byteLen+5]=(hi>>>8)&0xFF;
+padded[byteLen+6]=(hi>>>16)&0xFF;
+padded[byteLen+7]=(hi>>>24)&0xFF;
+// 处理最后的1-2个块
+var x=new Array(16);
+var numBlocks=padded.length/64;
+for(var b=0;b<numBlocks;b++){
+for(var j=0;j<16;j++){
+var off=b*64+j*4;
+x[j]=padded[off]|(padded[off+1]<<8)|(padded[off+2]<<16)|(padded[off+3]<<24);}
+var s=coreMd5(x,(b<numBlocks-1)?512:((padded.length%64)||64)*8);
+md5State=[safeAdd(md5State[0],s[0]),safeAdd(md5State[1],s[1]),safeAdd(md5State[2],s[2]),safeAdd(md5State[3],s[3])];}
+return binl2hex(md5State);}
+
+function calcFileMD5(file,onProgress,onDone){
+md5Init();
+var chunkSize=1024*1024; // 1MB 每块
+var offset=0;
+var reader=new FileReader();
+function readNext(){
+if(offset>=file.size){
+var result=md5Final();
+onDone(result);
+return;}
+var slice=file.slice(offset,offset+chunkSize);
+reader.readAsArrayBuffer(slice);}
+reader.onload=function(e){
+var buf=new Uint8Array(e.target.result);
+md5Update(buf);
+offset+=buf.length;
+onProgress(Math.min(offset,file.size),file.size);
+setTimeout(readNext,0);};
+readNext();}
+
+// ===== UI 交互 =====
+var dropZone=document.getElementById("drop-zone");
+var fileInput=document.getElementById("file-input");
+
+dropZone.addEventListener("click",function(){fileInput.click();});
+fileInput.addEventListener("change",function(e){if(e.target.files[0])handleFile(e.target.files[0]);});
+
+['dragenter','dragover'].forEach(function(ev){
+dropZone.addEventListener(ev,function(e){e.preventDefault();dropZone.classList.add("drag-over");});});
+['dragleave','drop'].forEach(function(ev){
+dropZone.addEventListener(ev,function(e){e.preventDefault();dropZone.classList.remove("drag-over");});});
+dropZone.addEventListener("drop",function(e){
+if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
+
+function handleFile(file){
+document.getElementById("file-name").textContent=file.name;
+document.getElementById("file-size").textContent=formatSize(file.size);
+document.getElementById("md5-result").textContent=I18N.t('common.computing');
+document.getElementById("result-section").classList.add("show");
+document.getElementById("progress-wrap").classList.add("show");
+document.getElementById("verify-result").classList.remove("show","match","mismatch");
+document.getElementById("verify-input").value="";
+document.getElementById("progress-bar").style.width="0%";
+calcFileMD5(file,
+function(loaded,total){document.getElementById("progress-bar").style.width=(loaded/total*100).toFixed(1)+"%";},
+function(md5val){
+currentMd5=md5val;
+document.getElementById("md5-result").textContent=md5val;
+document.getElementById("progress-wrap").classList.remove("show");
+document.getElementById("progress-bar").style.width="100%";
+});}
+
+function copyMD5(){
+if(!currentMd5)return;
+var btn=document.getElementById("copy-btn");
+navigator.clipboard.writeText(currentMd5).then(function(){
+btn.textContent=I18N.t('common.copied');btn.classList.add("copied");
+setTimeout(function(){btn.textContent=I18N.t('common.copy');btn.classList.remove("copied");},1500);});}
+
+function verifyMD5(){
+var input=document.getElementById("verify-input").value.trim().toLowerCase();
+var resultEl=document.getElementById("verify-result");
+if(!input){resultEl.textContent=I18N.t('md5.verifyEmpty');resultEl.className="verify-result show mismatch";return;}
+if(!currentMd5){resultEl.textContent=I18N.t('md5.verifyNoFile');resultEl.className="verify-result show mismatch";return;}
+if(input===currentMd5){resultEl.textContent=I18N.t('md5.match');resultEl.className="verify-result show match";}
+else{resultEl.textContent=I18N.t('md5.mismatch');resultEl.className="verify-result show mismatch";}}
+</script>
+<div class="tool-nav"><span>相关工具：</span><a href="index.html">首页</a><a href="beijing-time.html">北京时间</a><a href="countdown.html">倒计时器</a><a href="hardware.html">硬件检测</a><a href="keyboard.html">键盘测试</a><a href="mouse.html">鼠标测试</a><span class="current">MD5校验</span></div>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-doctitle="kb.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="在线键盘测试工具，实时显示按键信息、键值、code码，支持按键记录和键盘故障检测">
+<link rel="canonical" href="https://march7th.work/keyboard.html">
+<meta property="og:title" content="键盘测试 - 按键检测与键值查看工具">
+<meta property="og:description" content="在线键盘测试工具，实时显示按键信息、键值、code码，支持按键记录和键盘故障检测">
+<meta property="og:url" content="https://march7th.work/keyboard.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="键盘测试 - 按键检测与键值查看工具">
+<meta name="twitter:description" content="在线键盘测试工具，实时显示按键信息、键值、code码，支持按键记录和键盘故障检测">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "键盘测试",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "description": "在线键盘测试工具，实时显示按键信息、键值、code码，支持按键记录和键盘故障检测",
+      "url": "https://march7th.work/keyboard.html",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "键盘测试",
+          "item": "https://march7th.work/keyboard.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<title>键盘测试 - 按键检测与键值查看工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow-x:hidden;overflow-y:auto}
+body{background:url(2.jpg) center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px 20px 60px;position:relative;gap:20px}
+body::before{content:"";position:absolute;inset:0;background:rgba(255,192,203,0.15);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.page-header{position:relative;z-index:1;width:90%;max-width:1080px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{padding:10px 22px;border:1px solid rgba(255,255,255,0.5);border-radius:22px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-decoration:none;display:inline-block}
+.back-btn:hover{background:rgba(255,105,180,0.4);transform:translateX(-2px);box-shadow:0 4px 14px rgba(255,105,180,0.4)}
+.page-title{font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,0.85),0 0 8px rgba(0,0,0,0.6);display:flex;align-items:center;gap:10px}
+.page-title::before{content:"";width:5px;height:24px;background:linear-gradient(to bottom,#ff69b4,#ffb6c1);border-radius:3px;display:inline-block}
+.title-wrap{display:flex;flex-direction:column;gap:4px}
+.page-subtitle{font-size:0.95rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+.tool-card{position:relative;z-index:1;width:90%;max-width:1080px;padding:22px 22px;border-radius:20px;background:linear-gradient(135deg,rgba(0,0,0,0.28) 0%,rgba(255,105,180,0.32) 100%);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,0.4);box-shadow:0 10px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both}
+.tool-intro{font-size:0.9rem;color:#fff;line-height:1.75;margin-bottom:18px;padding:14px 18px;border-radius:12px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.2);border-left:3px solid rgba(255,105,180,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+/* 当前按键信息面板（紧凑） */
+.info-panel{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.info-cell{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.info-cell-label{font-size:0.74rem;color:rgba(255,255,255,0.78);margin-bottom:4px;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,0.7)}
+.info-cell-value{font-size:0.95rem;font-weight:700;color:#fff;font-family:Consolas,Monaco,monospace;text-shadow:0 2px 4px rgba(0,0,0,0.85);word-break:break-all;min-height:18px}
+.mod-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.mod-pill{padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.78);text-shadow:0 1px 2px rgba(0,0,0,0.7);transition:all 0.2s ease;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mod-pill.active{background:rgba(80,200,120,0.5);border-color:rgba(120,230,150,0.8);color:#fff;box-shadow:0 0 14px rgba(80,200,120,0.5)}
+/* 虚拟键盘 */
+.keyboard{background:rgba(0,0,0,0.2);border-radius:12px;padding:10px;border:1px solid rgba(255,255,255,0.15)}
+.kb-row{display:flex;gap:5px;margin-bottom:5px;justify-content:center}
+.kb-row.numpad-row{justify-content:flex-start;max-width:340px;margin-left:auto;margin-right:auto}
+.kb-row:last-child{margin-bottom:0}
+.kb-key{flex:1 1 0;min-width:0;padding:9px 4px;border-radius:7px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);color:#fff;font-size:0.74rem;font-weight:600;text-align:center;transition:all 0.1s ease;text-shadow:0 1px 2px rgba(0,0,0,0.7);user-select:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.kb-key.wide-15{flex:1.5 1 0}
+.kb-key.wide-2{flex:2 1 0}
+.kb-key.wide-25{flex:2.5 1 0}
+.kb-key.wide-3{flex:3 1 0}
+.kb-key.wide-5{flex:5 1 0}
+.kb-key.wide-6{flex:6 1 0}
+.kb-key.active{background:linear-gradient(135deg,#ff69b4,#ff85c1);border-color:#ffb6c1;box-shadow:0 0 14px rgba(255,105,180,0.8),inset 0 1px 0 rgba(255,255,255,0.6);transform:translateY(1px);color:#fff}
+.kb-spacer{flex:0.5 1 0}
+/* 按键记录 */
+.section-title{font-size:0.95rem;font-weight:700;color:#fff;margin:18px 0 10px;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.section-title:first-child{margin-top:0}
+.history-section{margin-top:16px}
+.history-title{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.clear-btn{padding:6px 16px;border:1px solid rgba(255,255,255,0.5);border-radius:14px;background:rgba(255,80,80,0.3);color:#fff;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.clear-btn:hover{background:rgba(255,80,80,0.55);box-shadow:0 4px 12px rgba(255,80,80,0.4)}
+.history-list{max-height:160px;overflow-y:auto;border-radius:10px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.18);padding:8px;font-family:Consolas,Monaco,monospace;font-size:0.78rem;line-height:1.6;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.history-list::-webkit-scrollbar{width:6px}
+.history-list::-webkit-scrollbar-track{background:rgba(255,255,255,0.1);border-radius:3px}
+.history-list::-webkit-scrollbar-thumb{background:rgba(255,105,180,0.5);border-radius:3px}
+.history-item{padding:3px 7px;border-radius:5px;color:rgba(255,255,255,0.9);text-shadow:0 1px 2px rgba(0,0,0,0.6)}
+.history-item:nth-child(odd){background:rgba(255,255,255,0.05)}
+.history-item .t-time{color:rgba(255,200,220,0.85);margin-right:8px}
+.history-item .t-key{color:#ffb6c1;font-weight:600;margin-right:8px}
+.history-empty{color:rgba(255,255,255,0.5);text-align:center;padding:16px;font-style:italic}
+/* 移动端提示 */
+.mobile-notice{display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;padding:30px 24px;background:rgba(0,0,0,0.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.mobile-notice.show{display:flex}
+.mobile-notice-card{width:100%;max-width:420px;padding:36px 28px;border-radius:22px;background:linear-gradient(135deg,rgba(0,0,0,0.4) 0%,rgba(255,105,180,0.4) 100%);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%);border:1px solid rgba(255,255,255,0.45);box-shadow:0 10px 40px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.5);text-align:center;animation:fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) both}
+.mobile-notice-icon{font-size:2rem;font-weight:700;color:#fff;margin-bottom:14px}
+.mobile-notice-title{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:1px;text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.mobile-notice-desc{font-size:0.95rem;color:rgba(255,255,255,0.92);margin-bottom:28px;line-height:1.7;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+.home-btn-big{display:inline-block;padding:14px 44px;border:none;border-radius:28px;background:linear-gradient(135deg,#ff69b4,#ff85c1);color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:1px;text-decoration:none;cursor:pointer;transition:all 0.3s ease;box-shadow:0 6px 20px rgba(255,105,180,0.5);font-family:inherit;position:relative;overflow:hidden}
+.home-btn-big::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s ease}
+.home-btn-big:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(255,105,180,0.7)}
+.home-btn-big:hover::before{left:100%}
+@media (max-width:600px){.page-title{font-size:1.4rem}.tool-card{padding:16px 12px}.info-panel{grid-template-columns:repeat(2,1fr)}.kb-key{font-size:0.62rem;padding:7px 2px}}
+.tool-nav{position:relative;z-index:1;max-width:900px;width:calc(100% - 48px);margin:24px auto 0;padding:14px 20px;border-radius:16px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:center;font-size:0.85rem}.tool-nav span{color:rgba(255,255,255,0.5);font-weight:500}.tool-nav a{color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.2s ease}.tool-nav a:hover{color:#fff;text-shadow:0 0 8px rgba(255,105,180,0.6)}.tool-nav .current{color:#fff;font-weight:700;text-shadow:0 0 8px rgba(255,105,180,0.4)}
+</style>
+<link rel="stylesheet" href="lang.css">
+</head>
+<body>
+<div class="lang-switcher"><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button></div>
+<!-- 移动端提示 -->
+<div class="mobile-notice" id="mobile-notice">
+  <div class="mobile-notice-card">
+    <div class="mobile-notice-icon">键盘</div>
+    <div class="mobile-notice-title" data-i18n="mobile.noticeTitle">该功能暂时不对移动端用户开放</div>
+    <div class="mobile-notice-desc" data-i18n="mobile.keyboardNotice">键盘测试需要真实的物理键盘，请在电脑端访问使用。</div>
+    <a class="home-btn-big" href="index.html" data-i18n="nav.backHome">← 返回主页</a>
+  </div>
+</div>
+
+<div class="page-header">
+  <a class="back-btn" href="index.html" data-i18n="nav.back">← 返回工具箱</a>
+  <div class="title-wrap">
+    <h1 class="page-title" data-i18n="kb.title">键盘测试</h1>
+    <p class="page-subtitle" data-i18n="kb.subtitle">按下键盘按键，实时查看键名、键值与按键历史</p>
+  </div>
+</div>
+
+<div class="tool-card">
+  <p class="tool-intro">本工具是一款在线键盘测试工具，可实时显示每次按键的 key、code、keyCode 与 repeat 状态，同时通过虚拟键盘高亮当前按下的按键，并记录按键历史。适用于检测键盘按键是否失灵、查看特殊按键键值以及排查键盘故障。</p>
+  <!-- 当前按键信息 -->
+  <div class="section-title">当前按键</div>
+  <div class="info-panel">
+    <div class="info-cell"><div class="info-cell-label">key</div><div class="info-cell-value" id="info-key">-</div></div>
+    <div class="info-cell"><div class="info-cell-label">code</div><div class="info-cell-value" id="info-code">-</div></div>
+    <div class="info-cell"><div class="info-cell-label">keyCode</div><div class="info-cell-value" id="info-keycode">-</div></div>
+    <div class="info-cell"><div class="info-cell-label">repeat</div><div class="info-cell-value" id="info-repeat">-</div></div>
+  </div>
+  <div class="section-title">修饰键状态</div>
+  <div class="mod-row">
+    <div class="mod-pill" id="mod-ctrl">Ctrl</div>
+    <div class="mod-pill" id="mod-shift">Shift</div>
+    <div class="mod-pill" id="mod-alt">Alt</div>
+    <div class="mod-pill" id="mod-meta">Win/Meta</div>
+  </div>
+
+  <!-- 虚拟键盘 -->
+  <div class="section-title">虚拟键盘</div>
+  <div class="keyboard" id="keyboard"></div>
+
+  <!-- 按键记录 -->
+  <div class="history-section">
+    <div class="history-title">
+      <span data-i18n="kb.history">按键记录</span>
+      <button class="clear-btn" onclick="clearHistory()" data-i18n="common.clear">清除记录</button>
+    </div>
+    <div class="history-list" id="history-list">
+      <div class="history-empty" data-i18n="kb.historyEmpty">按下任意键开始测试...</div>
+    </div>
+  </div>
+</div>
+
+<script src="lang.js?v=20260729"></script>
+<script>
+// 移动端检测
+function isMobile(){
+  var ua=navigator.userAgent||"";
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua))return true;
+  if(navigator.maxTouchPoints && navigator.maxTouchPoints>1 && window.innerWidth<=820)return true;
+  return false;
+}
+if(isMobile()){document.getElementById("mobile-notice").classList.add("show");}
+
+// 键盘布局数据：每个键 [显示文本, code]
+var layout=[
+  [["Esc","Escape"],["F1","F1"],["F2","F2"],["F3","F3"],["F4","F4"],["F5","F5"],["F6","F6"],["F7","F7"],["F8","F8"],["F9","F9"],["F10","F10"],["F11","F11"],["F12","F12"]],
+  [["`","Backquote"],["1","Digit1"],["2","Digit2"],["3","Digit3"],["4","Digit4"],["5","Digit5"],["6","Digit6"],["7","Digit7"],["8","Digit8"],["9","Digit9"],["0","Digit0"],["-","Minus"],["=","Equal"],["Backspace","Backspace:wide-2"]],
+  [["Tab","Tab:wide-15"],["Q","KeyQ"],["W","KeyW"],["E","KeyE"],["R","KeyR"],["T","KeyT"],["Y","KeyY"],["U","KeyU"],["I","KeyI"],["O","KeyO"],["P","KeyP"],["[","BracketLeft"],["]","BracketRight"],["\\","Backslash"]],
+  [["Caps","CapsLock:wide-2"],["A","KeyA"],["S","KeyS"],["D","KeyD"],["F","KeyF"],["G","KeyG"],["H","KeyH"],["J","KeyJ"],["K","KeyK"],["L","KeyL"],[";","Semicolon"],["'","Quote"],["Enter","Enter:wide-25"]],
+  [["Shift","ShiftLeft:wide-25"],["Z","KeyZ"],["X","KeyX"],["C","KeyC"],["V","KeyV"],["B","KeyB"],["N","KeyN"],["M","KeyM"],[",","Comma"],[".","Period"],["/","Slash"],["Shift","ShiftRight:wide-25"]],
+  [["Ctrl","ControlLeft:wide-15"],["Win","MetaLeft"],["Alt","AltLeft"],["Space","Space:wide-6"],["Alt","AltRight"],["Win","MetaRight"],["Menu","ContextMenu"],["Ctrl","ControlRight:wide-15"]],
+  [["PrtSc","PrintScreen"],["ScrLk","ScrollLock"],["Pause","Pause"]],
+  [["Ins","Insert"],["Home","Home"],["PgUp","PageUp"],[ "",  "Spacer:wide-15"],["Del","Delete"],["End","End"],["PgDn","PageDown"],[ "",  "Spacer:wide-15"],["↑","ArrowUp"],["←","ArrowLeft"],["↓","ArrowDown"],["→","ArrowRight"]],
+  // 小键盘区
+  [["Num","NumLock"],["/","NumpadDivide"],["*","NumpadMultiply"],["-","NumpadSubtract"]],
+  [["7","Numpad7"],["8","Numpad8"],["9","Numpad9"],["+","NumpadAdd:wide-2"]],
+  [["4","Numpad4"],["5","Numpad5"],["6","Numpad6"]],
+  [["1","Numpad1"],["2","Numpad2"],["3","Numpad3"],["Enter","NumpadEnter:wide-2"]],
+  [["0","Numpad0:wide-2"],[".","NumpadDecimal"]]
+];
+
+// 修饰键 code 别名映射（不同浏览器/系统对 Win 键的 code 命名不同）
+function normCode(code){
+  // OSLeft/OSRight 是旧版浏览器对 Win 键的命名，统一映射到 MetaLeft/MetaRight
+  if(code==="OSLeft")return "MetaLeft";
+  if(code==="OSRight")return "MetaRight";
+  return code;
+}
+// 修饰键类别映射：用于左右修饰键同时高亮
+function modGroup(code){
+  if(code==="ControlLeft"||code==="ControlRight")return "Control";
+  if(code==="ShiftLeft"||code==="ShiftRight")return "Shift";
+  if(code==="AltLeft"||code==="AltRight")return "Alt";
+  if(code==="MetaLeft"||code==="MetaRight"||code==="OSLeft"||code==="OSRight")return "Meta";
+  return null;
+}
+
+// 渲染键盘
+var kbContainer=document.getElementById("keyboard");
+layout.forEach(function(row){
+  var rowEl=document.createElement("div");
+  rowEl.className="kb-row";
+  // 检测是否是小键盘行（所有键的 code 都以 Numpad 开头），左对齐并限制宽度
+  var allNumpad=row.every(function(k){var c=k[1].split(":")[0];return c.indexOf("Numpad")===0;});
+  if(allNumpad){
+    rowEl.classList.add("numpad-row");
+  }
+  row.forEach(function(key){
+    var parts=key[1].split(":");
+    var code=parts[0];
+    var wideClass=parts[1]?(" wide-"+parts[1]):"";
+    // 占位符：用于在小键盘和方向键之间留出空隙
+    if(code==="Spacer"){
+      var spacer=document.createElement("div");
+      spacer.className="kb-spacer"+wideClass;
+      rowEl.appendChild(spacer);
+      return;
+    }
+    var keyEl=document.createElement("div");
+    keyEl.className="kb-key"+wideClass;
+    keyEl.setAttribute("data-code",code);
+    // 给修饰键打上组标签，方便左右同组高亮
+    var g=modGroup(code);
+    if(g){
+      var groupCode=g==="Control"?"Control":(g==="Shift"?"Shift":(g==="Alt"?"Alt":"Meta"));
+      keyEl.setAttribute("data-modgroup",groupCode);
+    }
+    keyEl.textContent=key[0];
+    rowEl.appendChild(keyEl);
+  });
+  kbContainer.appendChild(rowEl);
+});
+
+// 状态
+var history=[];
+var pressedKeys={};
+
+function pad2(n){return n<10?"0"+n:n;}
+function timestamp(){var d=new Date();return pad2(d.getHours())+":"+pad2(d.getMinutes())+":"+pad2(d.getSeconds())+"."+pad2(Math.floor(d.getMilliseconds()/10));}
+
+function highlightKey(code,active){
+  var els=document.querySelectorAll('.kb-key[data-code="'+code+'"]');
+  for(var i=0;i<els.length;i++){
+    if(active)els[i].classList.add("active");
+    else els[i].classList.remove("active");
+  }
+}
+
+function updateMods(e){
+  document.getElementById("mod-ctrl").classList.toggle("active",e.ctrlKey);
+  document.getElementById("mod-shift").classList.toggle("active",e.shiftKey);
+  document.getElementById("mod-alt").classList.toggle("active",e.altKey);
+  document.getElementById("mod-meta").classList.toggle("active",e.metaKey);
+}
+
+function updateInfo(e){
+  var keyDisplay=e.key;
+  if(keyDisplay===" ")keyDisplay="Space";
+  if(keyDisplay.length===1&&keyDisplay===" ")keyDisplay="Space";
+  document.getElementById("info-key").textContent=keyDisplay;
+  document.getElementById("info-code").textContent=e.code||"-";
+  document.getElementById("info-keycode").textContent=e.keyCode||"-";
+  document.getElementById("info-repeat").textContent=e.repeat?I18N.t('common.yes'):I18N.t('common.no');
+}
+
+function addHistory(e){
+  var keyDisplay=e.key===" "?"Space":e.key;
+  history.unshift({time:timestamp(),key:keyDisplay,code:e.code||"-"});
+  if(history.length>50)history.pop();
+  renderHistory();
+}
+function renderHistory(){
+  var list=document.getElementById("history-list");
+  if(history.length===0){list.innerHTML='<div class="history-empty">'+I18N.t('kb.historyEmpty')+'</div>';return;}
+  var html="";
+  for(var i=0;i<history.length;i++){
+    var h=history[i];
+    html+='<div class="history-item"><span class="t-time">'+h.time+'</span><span class="t-key">'+h.key+'</span>'+h.code+'</div>';
+  }
+  list.innerHTML=html;
+}
+
+// 键盘事件
+window.addEventListener("keydown",function(e){
+  // 阻止部分按键的默认行为，便于测试（Alt 单独按下不阻止，避免触发浏览器菜单栏）
+  if(["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","Tab","CapsLock","ScrollLock","Pause","Insert","Home","PageUp","Delete","End","PageDown","ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Backspace"," "].indexOf(e.key)>=0){
+    e.preventDefault();
+  }
+  updateMods(e);
+  updateInfo(e);
+  var code=normCode(e.code);
+  highlightKey(code,true);
+  // 修饰键：左右同组一起高亮（让用户更直观看到"左 Alt"和"右 Alt"都属于 Alt）
+  var g=modGroup(e.code);
+  if(g){
+    var groupCode=g==="Control"?"Control":(g==="Shift"?"Shift":(g==="Alt"?"Alt":"Meta"));
+    document.querySelectorAll('.kb-key[data-modgroup="'+groupCode+'"]').forEach(function(el){el.classList.add("active");});
+  }
+  if(!e.repeat){
+    addHistory(e);
+  }
+  pressedKeys[code]=true;
+});
+
+window.addEventListener("keyup",function(e){
+  updateMods(e);
+  var code=normCode(e.code);
+  highlightKey(code,false);
+  var g=modGroup(e.code);
+  if(g){
+    var groupCode=g==="Control"?"Control":(g==="Shift"?"Shift":(g==="Alt"?"Alt":"Meta"));
+    // 只在组内没有任何键还按着时才取消高亮
+    var stillPressed=false;
+    if(g==="Control"&&(!pressedKeys["ControlLeft"]||e.code!=="ControlLeft")&&(!pressedKeys["ControlRight"]||e.code!=="ControlRight"))stillPressed=pressedKeys["ControlLeft"]||pressedKeys["ControlRight"];
+    else if(g==="Shift")stillPressed=(e.code==="ShiftLeft"?pressedKeys["ShiftRight"]:pressedKeys["ShiftLeft"]);
+    else if(g==="Alt")stillPressed=(e.code==="AltLeft"?pressedKeys["AltRight"]:pressedKeys["AltLeft"]);
+    else if(g==="Meta")stillPressed=(e.code==="MetaLeft"||e.code==="OSLeft"?pressedKeys["MetaRight"]:pressedKeys["MetaLeft"]);
+    if(!stillPressed){
+      document.querySelectorAll('.kb-key[data-modgroup="'+groupCode+'"]').forEach(function(el){el.classList.remove("active");});
+    }
+  }
+  delete pressedKeys[code];
+});
+
+// 失焦时清除所有高亮（防止切走后键卡住）
+window.addEventListener("blur",function(){
+  document.querySelectorAll(".kb-key.active").forEach(function(el){el.classList.remove("active");});
+  for(var k in pressedKeys)delete pressedKeys[k];
+  ["mod-ctrl","mod-shift","mod-alt","mod-meta"].forEach(function(id){document.getElementById(id).classList.remove("active");});
+});
+
+function clearHistory(){
+  history=[];
+  renderHistory();
+}
+// 语言切换时重新渲染动态内容
+window.addEventListener('langapply',function(){renderHistory();});
+</script>
+<div class="tool-nav"><span>相关工具：</span><a href="index.html">首页</a><a href="beijing-time.html">北京时间</a><a href="countdown.html">倒计时器</a><a href="hardware.html">硬件检测</a><span class="current">键盘测试</span><a href="mouse.html">鼠标测试</a><a href="md5.html">MD5校验</a></div>
+</body>
+</html>

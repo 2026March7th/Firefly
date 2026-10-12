@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-doctitle="hw.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="在线硬件检测工具，检测操作系统、浏览器、屏幕分辨率、CPU、内存等电脑硬件信息">
+<link rel="canonical" href="https://march7th.work/hardware.html">
+<meta property="og:title" content="硬件检测 - 系统与硬件信息在线检测工具">
+<meta property="og:description" content="在线硬件检测工具，检测操作系统、浏览器、屏幕分辨率、CPU、内存等电脑硬件信息">
+<meta property="og:url" content="https://march7th.work/hardware.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="硬件检测 - 系统与硬件信息在线检测工具">
+<meta name="twitter:description" content="在线硬件检测工具，检测操作系统、浏览器、屏幕分辨率、CPU、内存等电脑硬件信息">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "硬件检测",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "description": "在线硬件检测工具，检测操作系统、浏览器、屏幕分辨率、CPU、内存等电脑硬件信息",
+      "url": "https://march7th.work/hardware.html",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "硬件检测",
+          "item": "https://march7th.work/hardware.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<title>硬件检测 - 系统与硬件信息在线检测工具</title>
+<link rel="stylesheet" href="lang.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow-x:hidden;overflow-y:auto}
+body{background:url(2.jpg) center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px 20px 60px;position:relative;gap:24px}
+body::before{content:"";position:absolute;inset:0;background:rgba(255,192,203,0.15);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.page-header{position:relative;z-index:1;width:90%;max-width:880px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{padding:10px 22px;border:1px solid rgba(255,255,255,0.5);border-radius:22px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:inherit;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-decoration:none;display:inline-block}
+.back-btn:hover{background:rgba(255,105,180,0.4);transform:translateX(-2px);box-shadow:0 4px 14px rgba(255,105,180,0.4)}
+.page-title{font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:2px;text-shadow:0 2px 4px rgba(0,0,0,0.85),0 0 8px rgba(0,0,0,0.6);display:flex;align-items:center;gap:10px}
+.page-title::before{content:"";width:5px;height:24px;background:linear-gradient(to bottom,#ff69b4,#ffb6c1);border-radius:3px;display:inline-block}
+.title-wrap{display:flex;flex-direction:column;gap:4px}
+.page-subtitle{font-size:0.95rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+.tool-card{position:relative;z-index:1;width:90%;max-width:880px;padding:32px 28px;border-radius:22px;background:linear-gradient(135deg,rgba(0,0,0,0.28) 0%,rgba(255,105,180,0.32) 100%);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,0.4);box-shadow:0 10px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both}
+.tool-intro{font-size:0.9rem;color:#fff;line-height:1.75;margin-bottom:18px;padding:14px 18px;border-radius:12px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.2);border-left:3px solid rgba(255,105,180,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.card-header{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.2);text-shadow:0 2px 4px rgba(0,0,0,0.85)}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.info-item{padding:18px 18px;border-radius:14px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform 0.3s ease,box-shadow 0.3s ease}
+.info-item:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,105,180,0.3)}
+.info-label{font-size:0.9rem;color:rgba(255,255,255,0.78);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-shadow:0 1px 3px rgba(0,0,0,0.4);font-weight:600}
+.info-label .icon{font-size:1.1rem}
+.info-value{font-size:1.05rem;font-weight:600;color:#fff;line-height:1.7;text-shadow:0 2px 6px rgba(0,0,0,0.5);word-break:break-word}
+.refresh-btn{display:block;margin:28px auto 0;padding:12px 36px;border:none;border-radius:25px;font-size:0.98rem;font-weight:600;color:#fff;background:linear-gradient(135deg,#ff69b4,#ff85c1);box-shadow:0 4px 15px rgba(255,105,180,0.4);cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;font-family:inherit}
+.refresh-btn::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s ease}
+.refresh-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,105,180,0.6)}
+.refresh-btn:hover::before{left:100%}
+@media (max-width:600px){.info-grid{grid-template-columns:1fr}.page-title{font-size:1.4rem}.tool-card{padding:24px 18px}}
+.tool-nav{position:relative;z-index:1;max-width:900px;width:calc(100% - 48px);margin:24px auto 0;padding:14px 20px;border-radius:16px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:center;font-size:0.85rem}.tool-nav span{color:rgba(255,255,255,0.5);font-weight:500}.tool-nav a{color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.2s ease}.tool-nav a:hover{color:#fff;text-shadow:0 0 8px rgba(255,105,180,0.6)}.tool-nav .current{color:#fff;font-weight:700;text-shadow:0 0 8px rgba(255,105,180,0.4)}
+</style>
+</head>
+<body>
+<div class="lang-switcher"><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button></div>
+<div class="page-header">
+  <a class="back-btn" href="index.html" data-i18n="nav.back">← 返回工具箱</a>
+  <div class="title-wrap">
+    <h1 class="page-title" data-i18n="hw.title">硬件检测</h1>
+    <p class="page-subtitle" data-i18n="hw.subtitle">一键查看操作系统、浏览器、屏幕分辨率与硬件参数</p>
+  </div>
+</div>
+
+<div class="tool-card">
+  <p class="tool-intro">本工具是一款在线硬件检测工具，可在浏览器中一键查看操作系统版本、浏览器类型、屏幕分辨率与像素比、CPU核心线程数、设备内存、语言与触屏支持等电脑硬件与系统信息。检测过程完全在本地完成，不会上传任何隐私数据。</p>
+  <div class="card-header">检测项目</div>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label" data-i18n="hw.os">操作系统</div>
+      <div class="info-value" id="os-info" data-i18n="common.detecting">检测中...</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label" data-i18n="hw.browser">浏览器</div>
+      <div class="info-value" id="browser-info" data-i18n="common.detecting">检测中...</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label" data-i18n="hw.screen">屏幕</div>
+      <div class="info-value" id="screen-info" data-i18n="common.detecting">检测中...</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label" data-i18n="hw.hardware">硬件</div>
+      <div class="info-value" id="hardware-info" data-i18n="common.detecting">检测中...</div>
+    </div>
+  </div>
+  <button class="refresh-btn" onclick="detectAll()" data-i18n="hw.refresh">重新检测</button>
+</div>
+
+<script src="lang.js?v=20260729"></script>
+<script>
+function renderOSInfo(os,version,arch,bit){
+  var html=os;
+  if(version)html+="<br><span style='font-weight:500;font-size:0.92em;opacity:0.9'>"+I18N.t('hw.version')+version+"</span>";
+  if(arch)html+="<br><span style='font-weight:500;font-size:0.88em;opacity:0.8'>"+I18N.t('hw.arch')+arch+(bit?" "+bit:"")+"</span>";
+  document.getElementById("os-info").innerHTML=html;
+}
+function parseOSFromUA(ua,arch,bit){
+  var os=I18N.t('common.unknown'),version="";
+  var winMatch=ua.match(/Windows NT (\d+\.\d+)/);
+  if(winMatch){
+    var nt=winMatch[1];
+    if(nt==="10.0"){os="Windows 10 / 11"}
+    else if(nt==="6.3"){os="Windows 8.1"}
+    else if(nt==="6.2"){os="Windows 8"}
+    else if(nt==="6.1"){os="Windows 7"}
+    else if(nt==="6.0"){os="Windows Vista"}
+    else if(nt==="5.1"){os="Windows XP"}
+    else{os="Windows"}
+    version="NT "+nt;
+  }
+  else if(/iPad/.test(ua)){os="iPadOS";var m=ua.match(/OS (\d+[._]\d+(?:[._]\d+)?)/);if(m)version=m[1].replace(/_/g,".");}
+  else if(/iPhone|iPod/.test(ua)){os="iOS";var m=ua.match(/OS (\d+[._]\d+(?:[._]\d+)?)/);if(m)version=m[1].replace(/_/g,".");}
+  else if(/Mac OS X/.test(ua)){
+    // iPadOS 13+ 的 UA 伪装成 Mac，通过触屏判断区分
+    if(navigator.maxTouchPoints && navigator.maxTouchPoints>1){os="iPadOS"}
+    else{os="macOS"}
+    var m=ua.match(/Mac OS X (\d+[._]\d+(?:[._]\d+)?)/);
+    if(m)version=m[1].replace(/_/g,".");
+  }
+  else if(/Android/.test(ua)){os="Android";var m=ua.match(/Android (\d+(?:\.\d+){0,2})/);if(m)version=m[1];}
+  else if(/CrOS/.test(ua)){os="Chrome OS";var m=ua.match(/CrOS \S+ (\d+\.\d+\.\d+)/);if(m)version=m[1];}
+  else if(/Linux/.test(ua)){os="Linux"}
+  renderOSInfo(os,version,arch,bit);
+}
+function getOSInfo(){
+  var ua=navigator.userAgent;
+  var arch="",bit="";
+  if(navigator.platform)arch=navigator.platform;
+  // 优先使用现代 userAgentData API（Chromium 90+）获取高精度信息，可区分 Win10/11
+  if(navigator.userAgentData && navigator.userAgentData.getHighEntropyValues){
+    navigator.userAgentData.getHighEntropyValues(['platformVersion','architecture','bitness','model','fullVersionList'])
+      .then(function(hv){
+        var platform=navigator.userAgentData.platform;
+        var os=I18N.t('common.unknown'),version="";
+        if(platform==="Windows"){
+          var pv=(hv.platformVersion||"").split('.');
+          var major=parseInt(pv[0])||0;
+          // 微软规则: major >= 13 = Windows 11; 1-12 = Windows 10; 0 = 旧版本
+          if(major>=13){os="Windows 11"}
+          else if(major>=1){os="Windows 10"}
+          else{os=I18N.t('hw.windowsOld')}
+          version=hv.platformVersion;
+        } else if(platform==="macOS"){
+          os="macOS";
+          version=hv.platformVersion||"";
+          // 仍需判断 iPadOS
+          if(navigator.maxTouchPoints && navigator.maxTouchPoints>1){os="iPadOS"}
+        } else if(platform==="Android"||/Android/.test(ua)){
+          os="Android";
+          version=hv.platformVersion||"";
+        } else if(platform==="Chrome OS"||/CrOS/.test(ua)){
+          os="Chrome OS";
+          version=hv.platformVersion||"";
+        } else if(platform){
+          os=platform;
+          version=hv.platformVersion||"";
+        }
+        if(hv.architecture && !arch)arch=hv.architecture;
+        if(hv.bitness && !bit)bit=hv.bitness+I18N.t('hw.bit');
+        renderOSInfo(os,version,arch,bit);
+      })
+      .catch(function(){parseOSFromUA(ua,arch,bit);});
+    return;
+  }
+  parseOSFromUA(ua,arch,bit);
+}
+function getBrowserInfo(){
+  var ua=navigator.userAgent;
+  var browser=I18N.t('common.unknown'),version="";
+  var m;
+  if(/Edg\/(\d+)/.test(ua)){browser="Microsoft Edge";m=ua.match(/Edg\/(\d+)/)}
+  else if(/OPR\/(\d+)/.test(ua)){browser="Opera";m=ua.match(/OPR\/(\d+)/)}
+  else if(/Chrome\/(\d+)/.test(ua)&&!/Edg/.test(ua)){browser="Chrome";m=ua.match(/Chrome\/(\d+)/)}
+  else if(/Firefox\/(\d+)/.test(ua)){browser="Firefox";m=ua.match(/Firefox\/(\d+)/)}
+  else if(/Version\/(\d+).*Safari/.test(ua)){browser="Safari";m=ua.match(/Version\/(\d+)/)}
+  if(m)version=m[1];
+  document.getElementById("browser-info").textContent=version?browser+" "+version:browser;
+}
+function getScreenInfo(){
+  var w=screen.width,h=screen.height;
+  var dpr=window.devicePixelRatio||1;
+  var depth=screen.colorDepth||screen.pixelDepth||24;
+  var avail=I18N.t('hw.availArea')+screen.availWidth+" × "+screen.availHeight;
+  document.getElementById("screen-info").innerHTML=I18N.t('hw.resolution')+w+" × "+h+"<br>"+I18N.t('hw.pixelRatio')+dpr+"x<br>"+I18N.t('hw.colorDepth')+depth+I18N.t('hw.bit')+"<br>"+avail;
+}
+function getHardwareInfo(){
+  var cpu=navigator.hardwareConcurrency||I18N.t('common.unknown');
+  var mem=navigator.deviceMemory?navigator.deviceMemory+"GB":I18N.t('common.unavailable');
+  var lang=navigator.language||I18N.t('common.unknown');
+  var touch=("ontouchstart" in window)?I18N.t('common.supported'):I18N.t('common.unsupported');
+  var core=navigator.hardwareConcurrency?cpu+I18N.t('hw.cpuThreads'):I18N.t('common.unknown');
+  document.getElementById("hardware-info").innerHTML=I18N.t('hw.cpu')+core+"<br>"+I18N.t('hw.memory')+mem+"<br>"+I18N.t('hw.language')+lang+"<br>"+I18N.t('hw.touch')+touch;
+}
+function detectAll(){
+  getOSInfo();
+  getBrowserInfo();
+  getScreenInfo();
+  getHardwareInfo();
+}
+window.addEventListener("load",detectAll);
+window.addEventListener('langapply',detectAll);
+</script>
+<div class="tool-nav"><span>相关工具：</span><a href="index.html">首页</a><a href="beijing-time.html">北京时间</a><a href="countdown.html">倒计时器</a><span class="current">硬件检测</span><a href="keyboard.html">键盘测试</a><a href="mouse.html">鼠标测试</a><a href="md5.html">MD5校验</a></div>
+</body>
+</html>

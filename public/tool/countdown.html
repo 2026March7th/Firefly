@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-doctitle="cd.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="在线倒计时器，支持自定义时长，预设5/10/25/45/60分钟，到点响铃提醒，支持全屏显示">
+<link rel="canonical" href="https://march7th.work/countdown.html">
+<meta property="og:title" content="倒计时器 - 自定义时长定时提醒工具">
+<meta property="og:description" content="在线倒计时器，支持自定义时长，预设5/10/25/45/60分钟，到点响铃提醒，支持全屏显示">
+<meta property="og:url" content="https://march7th.work/countdown.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="倒计时器 - 自定义时长定时提醒工具">
+<meta name="twitter:description" content="在线倒计时器，支持自定义时长，预设5/10/25/45/60分钟，到点响铃提醒，支持全屏显示">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "倒计时器",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "description": "在线倒计时器，支持自定义时长，预设5/10/25/45/60分钟，到点响铃提醒，支持全屏显示",
+      "url": "https://march7th.work/countdown.html",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "倒计时器",
+          "item": "https://march7th.work/countdown.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<title>倒计时器 - 自定义时长定时提醒工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%;font-family:"Microsoft YaHei","PingFang SC",sans-serif;overflow-x:hidden;overflow-y:auto}
+body{background:url(2.jpg) center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;position:relative;padding:40px 20px;min-height:100vh}
+body::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.25);z-index:0}
+.glass-card{position:relative;z-index:1;width:90%;max-width:640px;padding:28px 26px;border-radius:24px;background:linear-gradient(135deg,rgba(0,0,0,0.25) 0%,rgba(255,105,180,0.35) 100%);backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);border:1px solid rgba(255,255,255,0.45);box-shadow:0 10px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 1s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px)}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.9rem;text-decoration:none;border:1px solid rgba(255,255,255,0.3);margin-bottom:22px;transition:all 0.3s ease}
+.back-btn:hover{background:rgba(255,255,255,0.25);transform:translateX(-3px)}
+
+.tool-title{font-size:1.75rem;font-weight:700;color:#fff;text-align:center;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,0.8),0 0 4px rgba(0,0,0,0.5)}
+.tool-subtitle{font-size:0.88rem;color:rgba(255,255,255,0.92);text-align:center;margin-bottom:22px;text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+.tool-intro{font-size:0.9rem;color:#fff;line-height:1.75;text-align:left;margin-bottom:20px;padding:14px 18px;border-radius:12px;background:rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.2);border-left:3px solid rgba(255,105,180,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+
+/* 时间输入区 */
+.input-group{display:flex;gap:10px;justify-content:center;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap}
+.input-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.input-item label{font-size:0.78rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.input-item input{width:68px;padding:8px 6px;text-align:center;font-size:1.15rem;font-weight:600;color:#333;background:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.5);border-radius:10px;outline:none;transition:all 0.3s ease}
+.input-item input:focus{background:#fff;box-shadow:0 0 0 3px rgba(255,105,180,0.5)}
+.input-item input:disabled{background:rgba(255,255,255,0.5);color:#666;cursor:not-allowed}
+
+/* 预设按钮 */
+.presets{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.preset-btn{padding:6px 12px;font-size:0.8rem;color:#fff;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:14px;cursor:pointer;transition:all 0.3s ease}
+.preset-btn:hover{background:rgba(255,105,180,0.4);border-color:rgba(255,255,255,0.6);transform:translateY(-2px)}
+.preset-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+/* 倒计时显示 */
+.timer-display{font-size:4.2rem;font-weight:700;color:#fff;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:3px;text-shadow:0 4px 16px rgba(0,0,0,0.8),0 0 8px rgba(0,0,0,0.4);padding:24px 0;transition:color 0.3s ease;font-family:"Consolas","Monaco",monospace}
+.timer-display.warning{color:#ffeb3b;text-shadow:0 4px 16px rgba(0,0,0,0.8),0 0 16px rgba(255,235,59,0.7)}
+.timer-display.danger{color:#ff5252;text-shadow:0 4px 16px rgba(0,0,0,0.8),0 0 20px rgba(255,82,82,0.8);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.timer-display.finished{color:#ff5252;animation:flash 0.5s ease-in-out infinite}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* 控制按钮 */
+.controls{display:flex;gap:14px;justify-content:center;margin-bottom:18px}
+.btn{padding:10px 28px;font-size:0.95rem;font-weight:600;color:#fff;background:linear-gradient(135deg,rgba(255,105,180,0.7),rgba(255,150,200,0.7));border:1px solid rgba(255,255,255,0.4);border-radius:22px;cursor:pointer;transition:all 0.3s ease}
+.btn:hover{background:linear-gradient(135deg,rgba(255,105,180,0.9),rgba(255,150,200,0.9));transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,105,180,0.4)}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:rgba(255,255,255,0.15)}
+.btn-secondary:hover{background:rgba(255,255,255,0.25);box-shadow:0 6px 20px rgba(255,255,255,0.15)}
+
+/* 全屏按钮 */
+.fullscreen-btn{display:block;margin:0 auto;padding:7px 16px;font-size:0.82rem;color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);border-radius:16px;cursor:pointer;transition:all 0.3s ease}
+.fullscreen-btn:hover{background:rgba(255,255,255,0.2)}
+
+/* 结束提示横幅 */
+.banner{display:none;margin-top:18px;padding:14px;text-align:center;color:#fff;background:rgba(255,82,82,0.6);border:1px solid rgba(255,255,255,0.4);border-radius:12px;font-size:1.05rem;font-weight:600;animation:bannerPulse 1s ease-in-out infinite}
+.banner.show{display:block}
+@keyframes bannerPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+
+/* 全屏模式样式 */
+.glass-card.fullscreen-mode{max-width:none;width:100vw;height:100vh;border-radius:0;border:none;padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,rgba(0,0,0,0.45) 0%,rgba(255,105,180,0.5) 100%)}
+.glass-card.fullscreen-mode .back-btn,
+.glass-card.fullscreen-mode .tool-title,
+.glass-card.fullscreen-mode .tool-subtitle,
+.glass-card.fullscreen-mode .input-group,
+.glass-card.fullscreen-mode .presets,
+.glass-card.fullscreen-mode .controls,
+.glass-card.fullscreen-mode .fullscreen-btn{display:none}
+.glass-card.fullscreen-mode .timer-display{font-size:18vw;letter-spacing:6px;padding:0}
+.glass-card.fullscreen-mode .banner{font-size:2.5vw}
+
+@media(max-width:600px){
+  .timer-display{font-size:3.5rem;letter-spacing:2px}
+  .input-item input{width:64px;font-size:1.1rem}
+  .tool-title{font-size:1.5rem}
+}
+.tool-nav{position:relative;z-index:1;max-width:900px;width:calc(100% - 48px);margin:24px auto 0;padding:14px 20px;border-radius:16px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:center;font-size:0.85rem}.tool-nav span{color:rgba(255,255,255,0.5);font-weight:500}.tool-nav a{color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.2s ease}.tool-nav a:hover{color:#fff;text-shadow:0 0 8px rgba(255,105,180,0.6)}.tool-nav .current{color:#fff;font-weight:700;text-shadow:0 0 8px rgba(255,105,180,0.4)}
+</style>
+<link rel="stylesheet" href="lang.css">
+</head>
+<body>
+<div class="lang-switcher"><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button></div>
+<div class="glass-card" id="card">
+  <a href="index.html" class="back-btn" data-i18n="nav.back">← 返回工具箱</a>
+  <h1 class="tool-title" data-i18n="cd.title">倒计时器</h1>
+  <p class="tool-subtitle" data-i18n="cd.subtitle">设置时间，到点响铃提醒</p>
+  <p class="tool-intro">本工具是一款在线倒计时器，可自定义时、分、秒，并提供5分钟、10分钟、25分钟（番茄钟）、45分钟、1小时等常用预设。倒计时结束时将通过浏览器发出响铃提醒，支持全屏显示，适用于学习、工作和烹饪等需要定时提醒的场景。</p>
+
+  <div class="input-group">
+    <div class="input-item">
+      <label data-i18n="cd.hour">时</label>
+      <input type="number" id="hours" min="0" max="99" value="0">
+    </div>
+    <div class="input-item">
+      <label data-i18n="cd.minute">分</label>
+      <input type="number" id="minutes" min="0" max="59" value="5">
+    </div>
+    <div class="input-item">
+      <label data-i18n="cd.second">秒</label>
+      <input type="number" id="seconds" min="0" max="59" value="0">
+    </div>
+  </div>
+
+  <div class="presets">
+    <button class="preset-btn" data-sec="300" data-i18n="cd.preset5">5 分钟</button>
+    <button class="preset-btn" data-sec="600" data-i18n="cd.preset10">10 分钟</button>
+    <button class="preset-btn" data-sec="1500" data-i18n="cd.preset25">25 分钟（番茄钟）</button>
+    <button class="preset-btn" data-sec="2700" data-i18n="cd.preset45">45 分钟</button>
+    <button class="preset-btn" data-sec="3600" data-i18n="cd.preset60">1 小时</button>
+  </div>
+
+  <div class="timer-display" id="display">00:05:00</div>
+
+  <div class="controls">
+    <button class="btn" id="startBtn" data-i18n="common.start">开始</button>
+    <button class="btn btn-secondary" id="resetBtn" data-i18n="common.reset">重置</button>
+  </div>
+
+  <button class="fullscreen-btn" id="fullscreenBtn" data-i18n="common.enterFullscreen">进入全屏</button>
+
+  <div class="banner" id="banner" data-i18n="cd.banner">倒计时结束！</div>
+</div>
+
+<script src="lang.js?v=20260729"></script>
+<script>
+(function(){
+  var hoursEl=document.getElementById("hours");
+  var minutesEl=document.getElementById("minutes");
+  var secondsEl=document.getElementById("seconds");
+  var display=document.getElementById("display");
+  var startBtn=document.getElementById("startBtn");
+  var resetBtn=document.getElementById("resetBtn");
+  var fullscreenBtn=document.getElementById("fullscreenBtn");
+  var banner=document.getElementById("banner");
+  var card=document.getElementById("card");
+  var presetBtns=document.querySelectorAll(".preset-btn");
+  var inputs=[hoursEl,minutesEl,secondsEl];
+
+  // 计时状态
+  var totalMs=0;        // 设定的总时长（毫秒）
+  var endTime=0;        // 倒计时结束的时刻（Date.now()）
+  var rafId=null;       // requestAnimationFrame 句柄
+  var running=false;    // 是否正在运行
+  var paused=false;     // 是否处于暂停状态（用于区分"开始"与"继续"）
+  var remainingMs=0;    // 暂停时记录的剩余时间
+  var audioCtx=null;    // Web Audio 上下文（懒加载）
+
+  // 格式化毫秒为 HH:MM:SS
+  function format(ms){
+    if(ms<0)ms=0;
+    var s=Math.floor(ms/1000);
+    var h=Math.floor(s/3600);s%=3600;
+    var m=Math.floor(s/60);s%=60;
+    function pad(n){return n<10?"0"+n:""+n;}
+    return pad(h)+":"+pad(m)+":"+pad(s);
+  }
+
+  // 从输入框读取总时长
+  function readInputs(){
+    var h=parseInt(hoursEl.value,10)||0;
+    var m=parseInt(minutesEl.value,10)||0;
+    var s=parseInt(secondsEl.value,10)||0;
+    return (h*3600+m*60+s)*1000;
+  }
+
+  // 写入输入框
+  function writeInputs(ms){
+    var s=Math.floor(ms/1000);
+    hoursEl.value=Math.floor(s/3600);s%=3600;
+    minutesEl.value=Math.floor(s/60);s%=60;
+    secondsEl.value=s;
+  }
+
+  // 更新显示（每帧调用）
+  function tick(){
+    if(!running)return;
+    var now=Date.now();
+    var remain=endTime-now;
+    if(remain<=0){
+      remain=0;
+      display.textContent=format(0);
+      display.classList.remove("warning","danger");
+      display.classList.add("finished");
+      finish();
+      return;
+    }
+    display.textContent=format(remain);
+    // 最后 10 秒变红，最后 60 秒变黄
+    display.classList.toggle("danger",remain<=10000);
+    display.classList.toggle("warning",remain<=60000&&remain>10000);
+    rafId=requestAnimationFrame(tick);
+  }
+
+  // 倒计时结束
+  function finish(){
+    running=false;
+    paused=false;
+    startBtn.textContent=I18N.t('common.start');
+    setInputsDisabled(false);
+    banner.classList.add("show");
+    playBeep();
+  }
+
+  // 更新全屏按钮文本（语言切换时也调用）
+  function updateFullscreenBtnText(){
+    var fs=document.fullscreenElement||document.webkitFullscreenElement;
+    fullscreenBtn.textContent=fs?I18N.t('common.exitFullscreen'):I18N.t('common.enterFullscreen');
+  }
+
+  // 播放提示音（Web Audio API：连续短促铃声）
+  function playBeep(){
+    try{
+      if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+      var now=audioCtx.currentTime;
+      // 播放 3 声短促铃声
+      for(var i=0;i<3;i++){
+        var osc=audioCtx.createOscillator();
+        var gain=audioCtx.createGain();
+        osc.type="sine";
+        osc.frequency.value=880;
+        gain.gain.setValueAtTime(0,audioCtx.currentTime+i*0.3);
+        gain.gain.linearRampToValueAtTime(0.3,audioCtx.currentTime+i*0.3+0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+i*0.3+0.25);
+        osc.connect(gain);gain.connect(audioCtx.destination);
+        osc.start(now+i*0.3);osc.stop(now+i*0.3+0.3);
+      }
+    }catch(e){console.warn("Audio playback failed:",e);}
+  }
+
+  // 启用/禁用输入框
+  function setInputsDisabled(disabled){
+    inputs.forEach(function(el){el.disabled=disabled;});
+    presetBtns.forEach(function(b){b.disabled=disabled;});
+  }
+
+  // 开始 / 暂停
+  startBtn.addEventListener("click",function(){
+    if(running){
+      // 暂停
+      running=false;
+      paused=true;
+      cancelAnimationFrame(rafId);
+      remainingMs=endTime-Date.now();
+      if(remainingMs<0)remainingMs=0;
+      startBtn.textContent=I18N.t('common.continue');
+      return;
+    }
+    // 开始或继续
+    if(paused){
+      totalMs=remainingMs;
+    }else{
+      totalMs=readInputs();
+    }
+    if(totalMs<=0)return;
+    banner.classList.remove("show");
+    display.classList.remove("finished");
+    endTime=Date.now()+totalMs;
+    running=true;
+    paused=false;
+    startBtn.textContent=I18N.t('common.pause');
+    setInputsDisabled(true);
+    tick();
+  });
+
+  // 重置
+  resetBtn.addEventListener("click",function(){
+    running=false;
+    paused=false;
+    cancelAnimationFrame(rafId);
+    remainingMs=0;
+    startBtn.textContent=I18N.t('common.start');
+    setInputsDisabled(false);
+    display.classList.remove("warning","danger","finished");
+    banner.classList.remove("show");
+    display.textContent=format(readInputs());
+  });
+
+  // 预设按钮
+  presetBtns.forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var sec=parseInt(btn.getAttribute("data-sec"),10);
+      writeInputs(sec*1000);
+      display.textContent=format(sec*1000);
+    });
+  });
+
+  // 输入框变化时实时更新显示
+  inputs.forEach(function(el){
+    el.addEventListener("input",function(){
+      if(!running){
+        display.textContent=format(readInputs());
+        display.classList.remove("warning","danger","finished");
+      }
+    });
+  });
+
+  // 全屏切换
+  fullscreenBtn.addEventListener("click",function(){
+    if(!document.fullscreenElement){
+      // 进入全屏：请求全屏并加全屏样式
+      var target=card;
+      var req=target.requestFullscreen||target.webkitRequestFullscreen||target.msRequestFullscreen;
+      if(req)req.call(target).catch(function(){});
+      else{
+        // 不支持 Fullscreen API 时，使用 CSS 模拟全屏（覆盖整个视口）
+        card.classList.add("fullscreen-mode");
+        fullscreenBtn.textContent=I18N.t('common.exitFullscreen');
+      }
+    }else{
+      document.exitFullscreen();
+    }
+  });
+
+  // 监听全屏状态变化（包括 ESC 退出）
+  document.addEventListener("fullscreenchange",function(){
+    if(document.fullscreenElement){
+      card.classList.add("fullscreen-mode");
+      fullscreenBtn.textContent=I18N.t('common.exitFullscreen');
+    }else{
+      card.classList.remove("fullscreen-mode");
+      fullscreenBtn.textContent=I18N.t('common.enterFullscreen');
+    }
+  });
+  // webkit 前缀
+  document.addEventListener("webkitfullscreenchange",function(){
+    var fs=document.webkitFullscreenElement||document.fullscreenElement;
+    if(fs){
+      card.classList.add("fullscreen-mode");
+      fullscreenBtn.textContent=I18N.t('common.exitFullscreen');
+    }else if(!document.fullscreenElement){
+      card.classList.remove("fullscreen-mode");
+      fullscreenBtn.textContent=I18N.t('common.enterFullscreen');
+    }
+  });
+
+  // 在全屏模式下点击显示区域可退出全屏
+  display.addEventListener("click",function(){
+    if(card.classList.contains("fullscreen-mode")){
+      if(document.fullscreenElement)document.exitFullscreen();
+      else card.classList.remove("fullscreen-mode");
+      fullscreenBtn.textContent=I18N.t('common.enterFullscreen');
+    }
+  });
+
+  // 语言切换时刷新动态按钮文本
+  window.addEventListener('langapply',function(){
+    if(running){startBtn.textContent=I18N.t('common.pause');}
+    else if(paused){startBtn.textContent=I18N.t('common.continue');}
+    else{startBtn.textContent=I18N.t('common.start');}
+    updateFullscreenBtnText();
+  });
+
+  // 初始显示
+  display.textContent=format(readInputs());
+})();
+</script>
+<div class="tool-nav"><span>相关工具：</span><a href="index.html">首页</a><a href="beijing-time.html">北京时间</a><span class="current">倒计时器</span><a href="hardware.html">硬件检测</a><a href="keyboard.html">键盘测试</a><a href="mouse.html">鼠标测试</a><a href="md5.html">MD5校验</a></div>
+</body>
+</html>

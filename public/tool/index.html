@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-doctitle="index.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具">
+<link rel="canonical" href="https://march7th.work/index.html">
+<meta property="og:title" content="三月七的个人主页 - 实用在线工具箱合集">
+<meta property="og:description" content="三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具">
+<meta property="og:url" content="https://march7th.work/index.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://march7th.work/1.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="三月七的个人主页 - 实用在线工具箱合集">
+<meta name="twitter:description" content="三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具">
+<meta name="twitter:image" content="https://march7th.work/1.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://march7th.work/#website",
+      "name": "三月七的个人主页",
+      "url": "https://march7th.work/",
+      "description": "三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具",
+      "inLanguage": "zh-CN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://march7th.work/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://march7th.work/index.html#webpage",
+      "name": "三月七的个人主页 - 实用在线工具箱合集",
+      "url": "https://march7th.work/index.html",
+      "description": "三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具",
+      "isPartOf": {
+        "@id": "https://march7th.work/#website"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://march7th.work/index.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<title>三月七的个人主页 - 实用在线工具箱合集</title>
+<link rel="stylesheet" href="lang.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%;font-family:"Microsoft YaHei","PingFang SC","Segoe UI","Helvetica Neue",-apple-system,BlinkMacSystemFont,sans-serif;overflow-x:hidden;overflow-y:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:url(2.jpg) center/cover no-repeat fixed;padding:24px;position:relative}
+body::before{content:"";position:fixed;inset:0;background:rgba(255,192,203,0.15);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:0}
+
+.page-wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+
+/* 顶部 Hero */
+.hero-card{width:100%;padding:36px 32px;border-radius:24px;background:linear-gradient(135deg,rgba(0,0,0,0.28) 0%,rgba(255,105,180,0.38) 100%);backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);border:1px solid rgba(255,255,255,0.45);box-shadow:0 10px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.5);display:flex;align-items:center;gap:28px;animation:fadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid rgba(255,255,255,0.85);box-shadow:0 6px 24px rgba(255,105,180,0.45);flex-shrink:0}
+.hero-content{flex:1;min-width:0}
+.hero-title{font-size:2rem;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,0.92);line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,0.5);max-width:720px}
+
+/* 内容主区 */
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
+
+/* 工具箱板块 */
+.section-card{padding:28px;border-radius:22px;background:linear-gradient(135deg,rgba(0,0,0,0.25) 0%,rgba(255,105,180,0.32) 100%);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,0.42);box-shadow:0 10px 40px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 0.8s 0.1s cubic-bezier(0.22,1,0.36,1) both}
+.section-header{margin-bottom:22px}
+.section-header h2{font-size:1.45rem;font-weight:700;color:#fff;letter-spacing:1px;text-shadow:0 2px 6px rgba(0,0,0,0.5);margin-bottom:6px}
+.section-header p{font-size:0.92rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.tool-intro{font-size:0.95rem;color:rgba(255,255,255,0.92);line-height:1.8;margin-bottom:18px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+
+.tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tool-card{display:flex;flex-direction:row;align-items:center;gap:16px;padding:18px 20px;border-radius:18px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.28);text-decoration:none;color:#fff;transition:all 0.3s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
+.tool-card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);transition:left 0.5s ease}
+.tool-card:hover{transform:translateY(-3px);background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.45);box-shadow:0 12px 32px rgba(0,0,0,0.25)}
+.tool-card:hover::before{left:100%}
+.tool-card:hover .tool-arrow{transform:translateX(4px);color:#fff}
+.tool-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#ff69b4 0%,#ff85c1 50%,#ffb6c1 100%);display:flex;align-items:center;justify-content:center;font-size:1.15rem;font-weight:800;flex-shrink:0;box-shadow:0 6px 18px rgba(255,105,180,0.45),inset 0 2px 4px rgba(255,255,255,0.35);border:2px solid rgba(255,255,255,0.55);text-shadow:0 1px 2px rgba(0,0,0,0.25);font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+.tool-info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.tool-name{font-size:1.05rem;font-weight:700;letter-spacing:0.5px;text-shadow:0 2px 4px rgba(0,0,0,0.5)}
+.tool-desc{font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5;text-shadow:0 1px 3px rgba(0,0,0,0.4);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tool-arrow{font-size:1.2rem;color:rgba(255,255,255,0.45);transition:all 0.3s ease;flex-shrink:0;margin-left:4px}
+
+/* 侧边栏 */
+.sidebar{display:flex;flex-direction:column;gap:20px}
+.side-card{padding:22px;border-radius:20px;background:linear-gradient(135deg,rgba(0,0,0,0.25) 0%,rgba(255,105,180,0.32) 100%);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,0.4);box-shadow:0 10px 40px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.5);animation:fadeInUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) both}
+.side-title{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.2);text-shadow:0 2px 4px rgba(0,0,0,0.5)}
+.side-text{font-size:0.88rem;color:rgba(255,255,255,0.9);line-height:1.8;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.side-text a{color:#ffb6c1;text-decoration:none}
+.side-text a:hover{text-decoration:underline}
+.contact-btn{display:block;width:100%;padding:10px 16px;text-align:center;text-decoration:none;border-radius:18px;font-size:0.85rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#ff69b4,#ff85c1);margin-top:10px;transition:all 0.3s ease}
+.contact-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,105,180,0.45)}
+.contact-btn + .contact-btn{margin-top:8px}
+
+/* 名言 */
+.quote-section{padding:20px;border-radius:16px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.22);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1)}
+.quote-section::before{content:"\201C";position:absolute;top:-2px;left:10px;font-size:2.2rem;color:rgba(255,182,193,0.18);font-family:Georgia,serif;line-height:1;pointer-events:none}
+.quote-text{position:relative;font-size:0.96rem;line-height:1.95;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.55);letter-spacing:0.3px}
+.quote-author{margin-top:12px;text-align:right;font-size:0.85rem;color:rgba(255,235,240,0.95);font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+
+/* 实用网页导航 */
+.web-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.web-link{display:block;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);text-decoration:none;color:#fff;transition:all 0.25s ease}
+.web-link:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
+.web-link-name{font-size:0.95rem;font-weight:700;margin-bottom:4px;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.web-link-desc{font-size:0.78rem;color:rgba(255,255,255,0.78);line-height:1.45;text-shadow:0 1px 2px rgba(0,0,0,0.4)}
+
+/* 页脚 */
+.footer{text-align:center;padding:18px;font-size:0.82rem;color:rgba(255,255,255,0.85);text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin-bottom:12px}
+.footer-links a{color:rgba(255,255,255,0.85);text-decoration:none;transition:all 0.2s ease}
+.footer-links a:hover{color:#fff;text-shadow:0 0 8px rgba(255,105,180,0.6)}
+
+@media (max-width:900px){
+  .main-grid{grid-template-columns:1fr}
+  .hero-card{flex-direction:column;text-align:center}
+  .hero-content{text-align:center}
+  .sidebar{order:2}
+}
+@media (max-width:600px){
+  body{padding:16px}
+  .hero-card{padding:26px 20px}
+  .hero-title{font-size:1.6rem}
+  .section-card{padding:22px 18px}
+  .tool-grid{grid-template-columns:1fr}
+}
+
+/* 英文模式微调 */
+html[lang="en"] .hero-title{font-size:1.85rem}
+html[lang="en"] .tool-name{font-size:1rem}
+html[lang="en"] .tool-desc{font-size:0.82rem}
+</style>
+</head>
+<body>
+<div class="lang-switcher"><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">中</button></div>
+
+<div class="page-wrap">
+  <header class="hero-card">
+    <img src="1.jpg" alt="三月七头像" class="hero-avatar">
+    <div class="hero-content">
+      <h1 class="hero-title" data-i18n="index.nickname">三月七</h1>
+      <p class="hero-desc" data-i18n="index.desc">三月七的个人主页，包含实用工具箱：北京时间、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等在线工具</p>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <main>
+      <section class="section-card">
+        <div class="section-header">
+          <h2 data-i18n="index.toolSectionTitle">在线工具箱</h2>
+          <p data-i18n="index.toolSectionDesc">实用小工具集合，所有工具均在浏览器本地运行</p>
+        </div>
+        <p class="tool-intro">本页面是三月七的个人主页与在线工具箱合集，提供北京时间显示、倒计时器、硬件检测、键盘测试、鼠标测试、MD5校验等实用在线工具。所有工具均在浏览器本地运行，无需安装任何软件，打开网页即可使用。</p>
+        <div class="tool-grid">
+          <a class="tool-card" href="beijing-time.html">
+            <div class="tool-icon">BT</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.beijing.name">北京时间</div>
+              <div class="tool-desc" data-i18n="tool.beijing.desc">东八区标准时间，精确到毫秒，支持全屏</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+          <a class="tool-card" href="countdown.html">
+            <div class="tool-icon">CD</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.countdown.name">倒计时器</div>
+              <div class="tool-desc" data-i18n="tool.countdown.desc">自定义时长倒计时，到点响铃，支持全屏</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+          <a class="tool-card" href="hardware.html">
+            <div class="tool-icon">HW</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.hardware.name">硬件检测</div>
+              <div class="tool-desc" data-i18n="tool.hardware.desc">检测操作系统、浏览器、屏幕与硬件信息</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+          <a class="tool-card" href="keyboard.html">
+            <div class="tool-icon">KB</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.keyboard.name">键盘测试</div>
+              <div class="tool-desc" data-i18n="tool.keyboard.desc">测试键盘按键功能，显示键值与按键记录</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+          <a class="tool-card" href="mouse.html">
+            <div class="tool-icon">MS</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.mouse.name">鼠标测试</div>
+              <div class="tool-desc" data-i18n="tool.mouse.desc">测试鼠标按键、滚轮、双击功能与坐标</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+          <a class="tool-card" href="md5.html">
+            <div class="tool-icon">M5</div>
+            <div class="tool-info">
+              <div class="tool-name" data-i18n="tool.md5.name">MD5 校验</div>
+              <div class="tool-desc" data-i18n="tool.md5.desc">文件 MD5 哈希计算与比对，纯本地不上传</div>
+            </div>
+            <div class="tool-arrow">→</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-card" style="margin-top:28px">
+        <div class="section-header">
+          <h2 data-i18n="index.webSectionTitle">实用网页导航</h2>
+          <p data-i18n="index.webSectionDesc">常用在线服务导航</p>
+        </div>
+        <nav class="web-grid">
+          <a class="web-link" href="https://www.speedtest.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.speedtest.name">测速网</div>
+            <div class="web-link-desc" data-i18n="web.speedtest.desc">在线网络测速</div>
+          </a>
+          <a class="web-link" href="https://tf.istrongcloud.com/" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.typhoon.name">台风地图</div>
+            <div class="web-link-desc" data-i18n="web.typhoon.desc">实时台风路径追踪</div>
+          </a>
+          <a class="web-link" href="https://bbk.endyun.ltd/main" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.mc.name">我的世界安卓版本库</div>
+            <div class="web-link-desc" data-i18n="web.mc.desc">基岩版安卓安装包下载</div>
+          </a>
+          <a class="web-link" href="https://msdn.itellyou.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.msdn.name">MSDN 下载站</div>
+            <div class="web-link-desc" data-i18n="web.msdn.desc">微软官方系统镜像</div>
+          </a>
+          <a class="web-link" href="https://store.steampowered.com/?l=schinese&area=g" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.steam.name">Steam 商店</div>
+            <div class="web-link-desc" data-i18n="web.steam.desc">数字游戏发行平台</div>
+          </a>
+          <a class="web-link" href="https://www.someacg.top/" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.someacg.name">SomeACG 壁纸</div>
+            <div class="web-link-desc" data-i18n="web.someacg.desc">二次元高清壁纸聚合</div>
+          </a>
+          <a class="web-link" href="https://www.gequbao.net/s/zh" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.gequbao.name">歌曲宝</div>
+            <div class="web-link-desc" data-i18n="web.gequbao.desc">免费在线听歌与下载</div>
+          </a>
+          <a class="web-link" href="https://www.airportal.cn/" target="_blank" rel="noopener noreferrer">
+            <div class="web-link-name" data-i18n="web.airportal.name">AirPortal 文件快传</div>
+            <div class="web-link-desc" data-i18n="web.airportal.desc">跨设备文件传输</div>
+          </a>
+        </nav>
+      </section>
+    </main>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <div class="side-title" data-i18n="index.bioTitle">个人简介</div>
+        <p class="side-text" data-i18n="index.bioContent">本人男，年纪不大，认为三月七很可爱。</p>
+      </div>
+
+      <div class="side-card">
+        <div class="side-title" data-i18n="index.skillsTitle">会些什么</div>
+        <p class="side-text" data-i18n="index.skillsContent">会修修电脑啥的，不多</p>
+      </div>
+
+      <div class="side-card">
+        <div class="side-title" data-i18n="index.contactTitle">联系方式</div>
+        <p class="side-text"><span data-i18n="index.mailLabel">mail：</span><a href="mailto:evernight2026@163.com">evernight2026@163.com</a></p>
+        <a class="contact-btn" href="https://space.bilibili.com/1844475405?" target="_blank" data-i18n="index.bilibiliBtn">前往bilibili个人主页</a>
+        <a class="contact-btn" href="https://www.douyin.com/user/MS4wLjABAAAAu0PvUbO9-1ZgXHJ-bEqcl2zP7QXCcUt0rEIQZuhUGwpfdq1wP1i15y7B41nK45KZ?from_tab_name=main" target="_blank" data-i18n="index.douyinBtn">前往抖音个人主页</a>
+      </div>
+
+      <div class="side-card quote-section">
+        <div class="quote-text" id="quoteText"></div>
+        <div class="quote-author" id="quoteAuthor"></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="beijing-time.html">北京时间</a>
+      <a href="countdown.html">倒计时器</a>
+      <a href="hardware.html">硬件检测</a>
+      <a href="keyboard.html">键盘测试</a>
+      <a href="mouse.html">鼠标测试</a>
+      <a href="md5.html">MD5校验</a>
+    </div>
+    <div data-i18n="index.footer">© 2026 三月七 - 个人主页</div>
+  </footer>
+</div>
+
+<script src="lang.js?v=20260729"></script>
+<script>
+(function(){
+  var quoteText=document.getElementById("quoteText");
+  var quoteAuthor=document.getElementById("quoteAuthor");
+  var currentIdx=Math.floor(Math.random()*16);
+
+  function getQuotes(){return I18N.dict[I18N.lang].quotes || [];}
+
+  function showQuote(){
+    var quotes=getQuotes();
+    var q=quotes[currentIdx];
+    if(!q)return;
+    quoteText.textContent=q.text;
+    quoteAuthor.textContent="— "+q.author;
+  }
+
+  window.addEventListener('langapply',showQuote);
+
+  if(document.readyState==='complete'||document.readyState==='interactive'){showQuote();}
+  else{document.addEventListener('DOMContentLoaded',showQuote);}
+})();
+</script>
+</body>
+</html>
