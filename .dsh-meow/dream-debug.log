@@ -18,3 +18,4 @@
 [2026-10-12T16:47:28.853Z] turn-stopping pid=21788 sid=ef999ad7 reason=none wasDream=false
 [2026-10-12T16:51:12.789Z] check sid=ef999ad7 active=false idle=225s
 [2026-10-12T17:03:15.959Z] hit-chain pid=21788 sid=ef999ad7 textLen=42 hit=null
+[2026-10-12T17:03:39.571Z] turn-stopping pid=21788 sid=ef999ad7 reason=none wasDream=false
