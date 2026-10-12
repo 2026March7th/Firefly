@@ -23,11 +23,11 @@ export const friendsPageConfig: FriendsPageConfig = {
 // 友链配置
 export const friendsConfig: FriendLink[] = [
 	{
-		title: "夏夜流萤",
+		title: "LegspCpd",
 		imgurl:
-			"https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-		siteurl: "https://blog.cuteleaf.cn",
+			"https://hub.legspcpd.top/file/1786478720569_b_98f8cf789dc723b202017adcb82a0da9.jpg",
+		desc: "初听不知曲中意，再听已是曲中人。",
+		siteurl: "https://blog.legspcpd.top",
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
