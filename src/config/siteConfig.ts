@@ -45,7 +45,7 @@ export const siteConfig: SiteConfig = {
 	title: "March7th的个人博客",
 
 	// 站点副标题
-	subtitle: "Demo site",
+	subtitle: "烟花易逝，人情长存",
 
 	// 站点 URL
 	site_url: "https://blog.march7th.work",
