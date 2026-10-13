@@ -1,12 +1,9 @@
 ---
-title: 晚上好
-published: 2026-10-13 21:10:00
-description: 网站上线第一天~
-image: "/images/1.webp"
+title: The  is test
+published: 2026-10-13
+tags: [test]
+category: test
 draft: false
-comment: false
-password: 0000
-passwordHint: 测试用文章，没必要看喵~
 ---
 
 正文从这里开始，Markdown 语法，和平时发帖差不多。
