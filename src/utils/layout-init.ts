@@ -15,6 +15,7 @@ import {
 	updateMainGridCols,
 	updateSidebarComponentsVisibility,
 } from "@/utils/grid-layout-utils";
+import { initEmailDeobfuscation } from "@/utils/email-protection-utils";
 import { initIconLoader } from "@/utils/icon-loader";
 import { initImageLoadFadeIn } from "@/utils/lqip-utils";
 import { initScroll } from "@/utils/scroll-utils";
@@ -88,6 +89,8 @@ export function initLayout(): void {
 	}
 
 	initImageLoadFadeIn();
+	// 还原被 Cloudflare 邮箱混淆留下的占位文字（Cloudflare 自带的还原脚本匹配不到本站的链接结构）
+	initEmailDeobfuscation();
 	// 切页换入后延到下一帧再重扫 LQIP fade-in，避免 astro:page-load 在同帧叠加
 	// 一堆游标/事件重扫阻塞换入首帧（swup:contentReplaced 已 rAF，一并延后）
 	document.addEventListener("astro:page-load", () => {
