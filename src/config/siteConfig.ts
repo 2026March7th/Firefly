@@ -37,12 +37,12 @@ const pages = resolvePageToggles({
 	// ── 关于 (About) ──────────────────────────────────
 
 	// 打赏页面开关
-	sponsor: false,
+	sponsor: true,
 });
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Firefly",
+	title: "March7th的个人博客",
 
 	// 站点副标题
 	subtitle: "Demo site",
@@ -63,7 +63,7 @@ export const siteConfig: SiteConfig = {
 		"博客",
 		"技术博客",
 		"静态博客",
-		"march7th",
+		"March7th",
 	],
 
 	// 主题色
@@ -92,11 +92,19 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		{
 			// 图标文件路径
-			src: "/favicon/firefly-32.png",
+			src: "/favicon/avatar-180.png",
 			// 可选，指定主题 'light' | 'dark'
 			// theme: "light",
 			// 可选，图标大小
-			// sizes: "32x32",
+			sizes: "180x180",
+		},
+		{
+			src: "/favicon/avatar-32.png",
+			sizes: "32x32",
+		},
+		{
+			src: "/favicon/avatar-192.png",
+			sizes: "192x192",
 		},
 	],
 
@@ -114,10 +122,10 @@ export const siteConfig: SiteConfig = {
 		logo: {
 			type: "image",
 			value: "assets/images/avatar.avif",
-			alt: "march7th",
+			alt: "March7th",
 		},
 		// 导航栏标题
-		title: "march7th Blog",
+		title: "March7th Blog",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
