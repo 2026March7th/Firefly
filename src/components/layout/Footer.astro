@@ -1,8 +1,8 @@
 ---
 import fs from "node:fs";
 import path from "node:path";
+import { Icon } from "astro-icon/components";
 import { profileConfig } from "@/config";
-import { url } from "@/utils/url-utils";
 
 const currentYear = new Date().getFullYear();
 
@@ -39,27 +39,24 @@ try {
 			<div class="mb-2">
 				{customFooterHtml && <div set:html={customFooterHtml} />}
 			</div>
-			<div class="mx-0.5 my-2.5 flex gap-x-2 gap-y-2.5 justify-center flex-wrap">
+			<div
+				class="mx-0.5 my-2.5 flex gap-x-2 gap-y-2.5 justify-center flex-wrap items-center"
+			>
 				&copy; <span id="copyright-year">{currentYear}</span>
 				{profileConfig.name}. All Rights Reserved.
 				<span aria-hidden="true">/</span>
-				<a
-					class="transition link text-(--primary) font-medium"
-					target="_blank"
-					href={url("rss.xml")}>RSS</a
+				<span
+					class="inline-flex items-center gap-1.5"
+					title="北京时间（UTC+8，Asia/Shanghai）"
 				>
-				<span aria-hidden="true">/</span>
-				<a
-					class="transition link text-(--primary) font-medium"
-					target="_blank"
-					href={url("atom.xml")}>Atom</a
-				>
-				<span aria-hidden="true">/</span>
-				<a
-					class="transition link text-(--primary) font-medium"
-					target="_blank"
-					href={url("sitemap-index.xml")}>Sitemap</a
-				>
+					<Icon name="material-symbols:schedule" class="text-base opacity-70" />
+					<span>北京时间</span>
+					<span
+						id="beijing-clock"
+						class="font-medium tabular-nums text-neutral-700 dark:text-neutral-200"
+						>--:--:--</span
+					>
+				</span>
 			</div>
 			<!--
 				注意：请勿随意修改或删除 "Powered by Astro & Firefly" 部分，这是对开源项目的尊重和支持。
@@ -87,3 +84,68 @@ try {
 		</div>
 	</div>
 </footer>
+
+<script>
+	// 北京时间（UTC+8）。优先向 time.syiban.com 对时，失败则退回本机时钟按 Asia/Shanghai 换算。
+	const SYNC_URL = "https://time.syiban.com/get_bjtime_syhaomiao.php";
+	const bjFormat = new Intl.DateTimeFormat("zh-CN", {
+		timeZone: "Asia/Shanghai",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		hourCycle: "h23",
+	});
+
+	// 服务器时间 - 本机时间（毫秒）
+	let clockOffset = 0;
+	let clockStarted = false;
+
+	// 接口返回 "Newtime" + base64("2026-07-26 10:11:07.238")
+	function parseServerTime(text: string): number | null {
+		let raw = text.trim();
+		if (raw.startsWith("Newtime")) raw = raw.slice(7);
+		const match = atob(raw).match(
+			/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)(?:\.(\d+))?/,
+		);
+		if (!match) return null;
+		const ms = new Date(
+			Number(match[1]),
+			Number(match[2]) - 1,
+			Number(match[3]),
+			Number(match[4]),
+			Number(match[5]),
+			Number(match[6]),
+			Number(match[7] ?? 0),
+		).getTime();
+		return Number.isNaN(ms) ? null : ms;
+	}
+
+	function updateClock(): void {
+		const el = document.getElementById("beijing-clock");
+		if (!el) return;
+		el.textContent = bjFormat.format(new Date(Date.now() + clockOffset));
+	}
+
+	function syncClock(): void {
+		fetch(`${SYNC_URL}?q=${Date.now()}`, { cache: "no-store" })
+			.then((res) => (res.ok ? res.text() : Promise.reject(new Error("bad status"))))
+			.then((text) => {
+				const serverMs = parseServerTime(text);
+				if (serverMs !== null) clockOffset = serverMs - Date.now();
+			})
+			.catch(() => {
+				// 跨域或网络不可用时静默忽略，直接用本机时钟
+			});
+	}
+
+	if (!clockStarted) {
+		clockStarted = true;
+		syncClock();
+		// 每 30 分钟重新对时，每秒刷新显示
+		window.setInterval(syncClock, 30 * 60 * 1000);
+		window.setInterval(updateClock, 1000);
+		document.addEventListener("astro:page-load", updateClock);
+		document.addEventListener("swup:contentReplaced", updateClock);
+	}
+	updateClock();
+</script>
