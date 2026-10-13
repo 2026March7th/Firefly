@@ -6,8 +6,7 @@
 /* ===== 主题相关变量 ===== */
 :root
   --primary: oklch(0.70 0.14 var(--hue))
-  // 鼠尾草绿背景（亮色，取头像主色 #373b34 的色相 132°，低饱和）
-  --page-bg: oklch(0.945 0.026 132)
+  --page-bg: oklch(0.95 0.01 var(--hue))
   --card-bg: white
   --card-bg-transparent: unquote("rgb(255 255 255 / var(--card-transparent-opacity, 0.6))")
   
@@ -91,8 +90,7 @@
 /* 暗色主题变量 */
 :root.dark
   --primary: oklch(0.75 0.14 var(--hue))
-  // 深橄榄绿背景（暗色，同色相压暗）
-  --page-bg: oklch(0.198 0.022 133)
+  --page-bg: oklch(0.16 0.014 var(--hue))
   --card-bg: oklch(0.23 0.015 var(--hue))
   --card-bg-transparent: unquote("rgb(23 23 23 / var(--card-transparent-opacity, 0.6))")
 
